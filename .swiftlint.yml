@@ -1,0 +1,55 @@
+disabled_rules:
+- trailing_whitespace
+- empty_enum_arguments
+- unused_closure_parameter
+- inclusive_language
+
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  - yoda_condition
+  - multiline_arguments
+  - multiline_parameters
+  - force_unwrapping
+
+force_cast: warning # implicitly
+force_try:
+  severity: warning # explicitly
+  
+function_body_length:
+  - 400 # warning
+  - 1500 # error
+  
+cyclomatic_complexity:
+  error: 60 # 15
+  ignores_case_statements: true
+
+line_length:
+  - 400 # warning
+  - 1500 # error
+
+file_length:
+  - 1000 # warning
+  - 2000 # error
+
+type_body_length:
+  - 1400 # warning
+  - 2000 # error
+
+large_tuple:
+  warning: 5
+  error: 10
+
+type_name:
+  min_length: 3 # only warning
+  max_length: # warning and error
+    warning: 60
+    error: 80
+  excluded: [iPhone, iCloudSyncButton]
+
+identifier_name:
+  validates_start_with_lowercase: warning
+  unallowed_symbols_severity: warning
+  min_length: 1 # only warning
+  max_length: 80 # warning
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle)

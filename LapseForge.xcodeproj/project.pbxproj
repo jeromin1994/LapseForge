@@ -6,23 +6,49 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7448D62C2E3FCF5600D0CB5C /* DeveloperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7448D62B2E3FCF5600D0CB5C /* DeveloperKit */; };
+		7448D6332E3FD14500D0CB5C /* ci_post_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */; };
+		7448D6342E3FD14500D0CB5C /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */; };
+		7448D63B2E3FD15600D0CB5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6362E3FD15600D0CB5C /* ContentView.swift */; };
+		7448D63C2E3FD15600D0CB5C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6372E3FD15600D0CB5C /* Item.swift */; };
+		7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6392E3FD15600D0CB5C /* LapseForgeApp.swift */; };
+		7448D63E2E3FD15600D0CB5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6352E3FD15600D0CB5C /* Assets.xcassets */; };
+		7448D6412E3FD17600D0CB5C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6402E3FD17600D0CB5C /* Utils.swift */; };
+		7448D64E2E3FD2FB00D0CB5C /* BaseServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D64A2E3FD2FB00D0CB5C /* BaseServerModel.swift */; };
+		7448D64F2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D64B2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift */; };
+		7448D6502E3FD2FB00D0CB5C /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6492E3FD2FB00D0CB5C /* BaseProvider.swift */; };
+		7448D6512E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6472E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift */; };
+		7448D6522E3FD2FB00D0CB5C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D64C2E3FD2FB00D0CB5C /* BaseView.swift */; };
+		7448D6532E3FD2FB00D0CB5C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D64D2E3FD2FB00D0CB5C /* BaseViewModel.swift */; };
+		7448D6542E3FD2FB00D0CB5C /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6482E3FD2FB00D0CB5C /* BaseInteractor.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		7448D6102E3FCBC100D0CB5C /* LapseForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LapseForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
+		7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
+		7448D6352E3FD15600D0CB5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7448D6362E3FD15600D0CB5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7448D6372E3FD15600D0CB5C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		7448D6382E3FD15600D0CB5C /* LapseForge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LapseForge.entitlements; sourceTree = "<group>"; };
+		7448D6392E3FD15600D0CB5C /* LapseForgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapseForgeApp.swift; sourceTree = "<group>"; };
+		7448D6402E3FD17600D0CB5C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		7448D6472E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAssemblyDTO.swift; sourceTree = "<group>"; };
+		7448D6482E3FD2FB00D0CB5C /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
+		7448D6492E3FD2FB00D0CB5C /* BaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProvider.swift; sourceTree = "<group>"; };
+		7448D64A2E3FD2FB00D0CB5C /* BaseServerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseServerModel.swift; sourceTree = "<group>"; };
+		7448D64B2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSheetDelegate.swift; sourceTree = "<group>"; };
+		7448D64C2E3FD2FB00D0CB5C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		7448D64D2E3FD2FB00D0CB5C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		7448D6122E3FCBC100D0CB5C /* LapseForge */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LapseForge;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7448D60D2E3FCBC100D0CB5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7448D62C2E3FCF5600D0CB5C /* DeveloperKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +58,8 @@
 		7448D6072E3FCBC100D0CB5C = {
 			isa = PBXGroup;
 			children = (
-				7448D6122E3FCBC100D0CB5C /* LapseForge */,
+				7448D6322E3FD14500D0CB5C /* ci_scripts */,
+				7448D63A2E3FD15600D0CB5C /* LapseForge */,
 				7448D6112E3FCBC100D0CB5C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +70,67 @@
 				7448D6102E3FCBC100D0CB5C /* LapseForge.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7448D6322E3FD14500D0CB5C /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */,
+				7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
+		7448D63A2E3FD15600D0CB5C /* LapseForge */ = {
+			isa = PBXGroup;
+			children = (
+				7448D6422E3FD2D600D0CB5C /* BaseClass */,
+				7448D63F2E3FD16D00D0CB5C /* Utils */,
+				7448D6552E3FD3B200D0CB5C /* Models */,
+				7448D6562E3FD3BD00D0CB5C /* Modules */,
+				7448D6352E3FD15600D0CB5C /* Assets.xcassets */,
+				7448D6382E3FD15600D0CB5C /* LapseForge.entitlements */,
+				7448D6392E3FD15600D0CB5C /* LapseForgeApp.swift */,
+			);
+			path = LapseForge;
+			sourceTree = "<group>";
+		};
+		7448D63F2E3FD16D00D0CB5C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7448D6402E3FD17600D0CB5C /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7448D6422E3FD2D600D0CB5C /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				7448D6472E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift */,
+				7448D6482E3FD2FB00D0CB5C /* BaseInteractor.swift */,
+				7448D6492E3FD2FB00D0CB5C /* BaseProvider.swift */,
+				7448D64A2E3FD2FB00D0CB5C /* BaseServerModel.swift */,
+				7448D64B2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift */,
+				7448D64C2E3FD2FB00D0CB5C /* BaseView.swift */,
+				7448D64D2E3FD2FB00D0CB5C /* BaseViewModel.swift */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
+		7448D6552E3FD3B200D0CB5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7448D6372E3FD15600D0CB5C /* Item.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7448D6562E3FD3BD00D0CB5C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7448D6362E3FD15600D0CB5C /* ContentView.swift */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,12 +147,11 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				7448D6122E3FCBC100D0CB5C /* LapseForge */,
+				7448D62F2E3FD07700D0CB5C /* PBXTargetDependency */,
 			);
 			name = LapseForge;
 			packageProductDependencies = (
+				7448D62B2E3FCF5600D0CB5C /* DeveloperKit */,
 			);
 			productName = LapseForge;
 			productReference = 7448D6102E3FCBC100D0CB5C /* LapseForge.app */;
@@ -94,6 +181,10 @@
 			);
 			mainGroup = 7448D6072E3FCBC100D0CB5C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7448D62A2E3FCF5600D0CB5C /* XCRemoteSwiftPackageReference "DeveloperKit" */,
+				7448D62D2E3FCF7000D0CB5C /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7448D6112E3FCBC100D0CB5C /* Products */;
 			projectDirPath = "";
@@ -109,6 +200,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7448D6332E3FD14500D0CB5C /* ci_post_xcodebuild.sh in Resources */,
+				7448D63E2E3FD15600D0CB5C /* Assets.xcassets in Resources */,
+				7448D6342E3FD14500D0CB5C /* ci_post_clone.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,10 +213,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7448D63B2E3FD15600D0CB5C /* ContentView.swift in Sources */,
+				7448D64E2E3FD2FB00D0CB5C /* BaseServerModel.swift in Sources */,
+				7448D64F2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift in Sources */,
+				7448D6502E3FD2FB00D0CB5C /* BaseProvider.swift in Sources */,
+				7448D6512E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift in Sources */,
+				7448D6522E3FD2FB00D0CB5C /* BaseView.swift in Sources */,
+				7448D6532E3FD2FB00D0CB5C /* BaseViewModel.swift in Sources */,
+				7448D6542E3FD2FB00D0CB5C /* BaseInteractor.swift in Sources */,
+				7448D63C2E3FD15600D0CB5C /* Item.swift in Sources */,
+				7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */,
+				7448D6412E3FD17600D0CB5C /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7448D62F2E3FD07700D0CB5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 7448D62E2E3FD07700D0CB5C /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7448D61C2E3FCBC200D0CB5C /* Debug */ = {
@@ -341,6 +453,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7448D62A2E3FCF5600D0CB5C /* XCRemoteSwiftPackageReference "DeveloperKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jeronimocabezuelo/DeveloperKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		7448D62D2E3FCF7000D0CB5C /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7448D62B2E3FCF5600D0CB5C /* DeveloperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7448D62A2E3FCF5600D0CB5C /* XCRemoteSwiftPackageReference "DeveloperKit" */;
+			productName = DeveloperKit;
+		};
+		7448D62E2E3FD07700D0CB5C /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7448D62D2E3FCF7000D0CB5C /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7448D6082E3FCBC100D0CB5C /* Project object */;
 }

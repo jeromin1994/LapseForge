@@ -1,0 +1,24 @@
+{
+  "originHash" : "8882e1d5a64057f97f3dd68cdcfa1cd8b67cbe902082b0e6d0dd00032afdc309",
+  "pins" : [
+    {
+      "identity" : "developerkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jeronimocabezuelo/DeveloperKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "57d0370ef3a0ac0d103195c663846af5a7c0b3c5"
+      }
+    },
+    {
+      "identity" : "swiftlintplugins",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SimplyDanny/SwiftLintPlugins",
+      "state" : {
+        "revision" : "8545ddf4de043e6f2051c5cf204f39ef778ebf6b",
+        "version" : "0.59.1"
+      }
+    }
+  ],
+  "version" : 3
+}
