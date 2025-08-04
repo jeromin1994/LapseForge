@@ -10,18 +10,11 @@
 		7448D62C2E3FCF5600D0CB5C /* DeveloperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7448D62B2E3FCF5600D0CB5C /* DeveloperKit */; };
 		7448D6332E3FD14500D0CB5C /* ci_post_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */; };
 		7448D6342E3FD14500D0CB5C /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */; };
-		7448D63B2E3FD15600D0CB5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6362E3FD15600D0CB5C /* ContentView.swift */; };
-		7448D63C2E3FD15600D0CB5C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6372E3FD15600D0CB5C /* Item.swift */; };
 		7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6392E3FD15600D0CB5C /* LapseForgeApp.swift */; };
 		7448D63E2E3FD15600D0CB5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6352E3FD15600D0CB5C /* Assets.xcassets */; };
 		7448D6412E3FD17600D0CB5C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6402E3FD17600D0CB5C /* Utils.swift */; };
-		7448D64E2E3FD2FB00D0CB5C /* BaseServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D64A2E3FD2FB00D0CB5C /* BaseServerModel.swift */; };
-		7448D64F2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D64B2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift */; };
-		7448D6502E3FD2FB00D0CB5C /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6492E3FD2FB00D0CB5C /* BaseProvider.swift */; };
-		7448D6512E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6472E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift */; };
-		7448D6522E3FD2FB00D0CB5C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D64C2E3FD2FB00D0CB5C /* BaseView.swift */; };
-		7448D6532E3FD2FB00D0CB5C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D64D2E3FD2FB00D0CB5C /* BaseViewModel.swift */; };
-		7448D6542E3FD2FB00D0CB5C /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6482E3FD2FB00D0CB5C /* BaseInteractor.swift */; };
+		7448D6612E41184C00D0CB5C /* LapseProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6602E41184C00D0CB5C /* LapseProject.swift */; };
+		7448D6632E41185900D0CB5C /* ProjectsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6622E41185900D0CB5C /* ProjectsListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,18 +22,11 @@
 		7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 		7448D6352E3FD15600D0CB5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7448D6362E3FD15600D0CB5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7448D6372E3FD15600D0CB5C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7448D6382E3FD15600D0CB5C /* LapseForge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LapseForge.entitlements; sourceTree = "<group>"; };
 		7448D6392E3FD15600D0CB5C /* LapseForgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapseForgeApp.swift; sourceTree = "<group>"; };
 		7448D6402E3FD17600D0CB5C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		7448D6472E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAssemblyDTO.swift; sourceTree = "<group>"; };
-		7448D6482E3FD2FB00D0CB5C /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
-		7448D6492E3FD2FB00D0CB5C /* BaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProvider.swift; sourceTree = "<group>"; };
-		7448D64A2E3FD2FB00D0CB5C /* BaseServerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseServerModel.swift; sourceTree = "<group>"; };
-		7448D64B2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSheetDelegate.swift; sourceTree = "<group>"; };
-		7448D64C2E3FD2FB00D0CB5C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		7448D64D2E3FD2FB00D0CB5C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		7448D6602E41184C00D0CB5C /* LapseProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapseProject.swift; sourceTree = "<group>"; };
+		7448D6622E41185900D0CB5C /* ProjectsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +70,6 @@
 		7448D63A2E3FD15600D0CB5C /* LapseForge */ = {
 			isa = PBXGroup;
 			children = (
-				7448D6422E3FD2D600D0CB5C /* BaseClass */,
 				7448D63F2E3FD16D00D0CB5C /* Utils */,
 				7448D6552E3FD3B200D0CB5C /* Models */,
 				7448D6562E3FD3BD00D0CB5C /* Modules */,
@@ -103,24 +88,10 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		7448D6422E3FD2D600D0CB5C /* BaseClass */ = {
-			isa = PBXGroup;
-			children = (
-				7448D6472E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift */,
-				7448D6482E3FD2FB00D0CB5C /* BaseInteractor.swift */,
-				7448D6492E3FD2FB00D0CB5C /* BaseProvider.swift */,
-				7448D64A2E3FD2FB00D0CB5C /* BaseServerModel.swift */,
-				7448D64B2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift */,
-				7448D64C2E3FD2FB00D0CB5C /* BaseView.swift */,
-				7448D64D2E3FD2FB00D0CB5C /* BaseViewModel.swift */,
-			);
-			path = BaseClass;
-			sourceTree = "<group>";
-		};
 		7448D6552E3FD3B200D0CB5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7448D6372E3FD15600D0CB5C /* Item.swift */,
+				7448D6602E41184C00D0CB5C /* LapseProject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,7 +99,7 @@
 		7448D6562E3FD3BD00D0CB5C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				7448D6362E3FD15600D0CB5C /* ContentView.swift */,
+				7448D6622E41185900D0CB5C /* ProjectsListView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -213,17 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7448D63B2E3FD15600D0CB5C /* ContentView.swift in Sources */,
-				7448D64E2E3FD2FB00D0CB5C /* BaseServerModel.swift in Sources */,
-				7448D64F2E3FD2FB00D0CB5C /* BaseSheetDelegate.swift in Sources */,
-				7448D6502E3FD2FB00D0CB5C /* BaseProvider.swift in Sources */,
-				7448D6512E3FD2FB00D0CB5C /* BaseAssemblyDTO.swift in Sources */,
-				7448D6522E3FD2FB00D0CB5C /* BaseView.swift in Sources */,
-				7448D6532E3FD2FB00D0CB5C /* BaseViewModel.swift in Sources */,
-				7448D6542E3FD2FB00D0CB5C /* BaseInteractor.swift in Sources */,
-				7448D63C2E3FD15600D0CB5C /* Item.swift in Sources */,
 				7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */,
 				7448D6412E3FD17600D0CB5C /* Utils.swift in Sources */,
+				7448D6632E41185900D0CB5C /* ProjectsListView.swift in Sources */,
+				7448D6612E41184C00D0CB5C /* LapseProject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ import SwiftData
 struct LapseForgeApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            LapseProject.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct LapseForgeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ProjectsListView()
         }
         .modelContainer(sharedModelContainer)
     }

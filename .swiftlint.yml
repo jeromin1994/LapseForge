@@ -3,6 +3,7 @@ disabled_rules:
 - empty_enum_arguments
 - unused_closure_parameter
 - inclusive_language
+- trailing_comma
 
 opt_in_rules: # some rules are only opt-in
   - empty_count
