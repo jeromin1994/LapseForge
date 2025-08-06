@@ -18,9 +18,9 @@ struct ProjectsListView: View {
             List {
                 ForEach(projects) { project in
                     NavigationLink {
-                        Text("Project at \(project.createdDate, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        ProjectView(project: project)
                     } label: {
-                        Text(project.createdDate, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text("\(project.title) at \(project.createdDate, format: Date.FormatStyle(date: .numeric, time: .standard))")
                     }
                 }
                 .onDelete(perform: deleteProjects)
@@ -42,8 +42,17 @@ struct ProjectsListView: View {
 
     private func addProject() {
         withAnimation {
-            let newProject = LapseProject(createdDate: Date())
+            let newProject = LapseProject(
+                createdDate: Date(),
+                title: projects.nextAvailableTitle()
+            )
             modelContext.insert(newProject)
+            
+            do {
+                try modelContext.save()
+            } catch {
+                print(error)
+            }
         }
     }
 
@@ -53,11 +62,12 @@ struct ProjectsListView: View {
                 guard let project = projects.at(index) else { continue }
                 modelContext.delete(project)
             }
+            
+            do {
+                try modelContext.save()
+            } catch {
+                print(error)
+            }
         }
     }
-}
-
-#Preview {
-    ProjectsListView()
-        .modelContainer(for: LapseProject.self, inMemory: true)
 }

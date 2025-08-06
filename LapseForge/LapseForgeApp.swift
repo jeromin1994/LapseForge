@@ -13,6 +13,7 @@ struct LapseForgeApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             LapseProject.self,
+            LapseSequence.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
