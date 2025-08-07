@@ -49,9 +49,13 @@ extension Array where Element == LapseProject {
 final class LapseSequence {
     var id: UUID
     var captures: [Date]
-    var expectedDuration: TimeInterval
+    var expectedDuration: TimeInterval?
     
-    init(captures: [Date] = [], expectedDuration: TimeInterval) {
+    var directoryName: String {
+        "sequence_\(id.uuidString)/"
+    }
+    
+    init(captures: [Date] = [], expectedDuration: TimeInterval? = nil) {
         self.id = UUID()
         self.captures = captures
         self.expectedDuration = expectedDuration

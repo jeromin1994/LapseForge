@@ -38,6 +38,9 @@ struct ProjectsListView: View {
         } detail: {
             Text("Select an Project")
         }
+        .onAppear(perform: {
+            deleteLostSequences()
+        })
     }
 
     private func addProject() {
@@ -69,5 +72,9 @@ struct ProjectsListView: View {
                 print(error)
             }
         }
+    }
+    
+    private func deleteLostSequences() {
+        // TODO: Montar un metood que borre las imagenes que no estén en un sequencia de un projecto
     }
 }
