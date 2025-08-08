@@ -12,32 +12,27 @@ struct ProjectView: View {
     let project: LapseProject
     
     @State private var currentSequence: LapseSequence?
+    @State private var scrubber: TimeInterval?
     
     var body: some View {
         VStack(spacing: 16) {
             // Previsualización
-            Color.gray
-                .frame(height: 200)
-                .overlay(
-                    Text("Preview")
-                        .foregroundColor(.white)
-                        .bold()
-                )
-            
-            // Línea de tiempo
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(project.sequences) { sequence in
-                        Text("Sequence \(sequence.captures.count) frames")
-                    }
-                }
+            ZStack(alignment: .bottomLeading) {
+                Color.gray
+                    .frame(height: 200)
+                    .overlay(
+                        Text("Preview")
+                            .foregroundColor(.white)
+                            .bold()
+                    )
+                Text("\((scrubber ?? .zero).timeString) - \(project.totalDuration.timeString)")
             }
-            
-            Text("Timeline")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.secondary.opacity(0.1))
-                .cornerRadius(8)
+            // Línea de tiempo avanzada
+            TimeLineView(
+                project: project,
+                currentSequence: $currentSequence,
+                scrubber: $scrubber
+            )
             
             // Botonera de control
             HStack {
@@ -56,7 +51,6 @@ struct ProjectView: View {
             
             Spacer()
         }
-        .padding()
         .navigationTitle(project.title)
         .sheet(
             item: $currentSequence,

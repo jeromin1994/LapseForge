@@ -20,6 +20,10 @@ final class LapseProject {
         self.title = title
         self.sequences = sequences
     }
+    
+    var totalDuration: TimeInterval {
+        sequences.compactMap(\.expectedDuration).reduce(0, +)
+    }
 }
 
 extension Array where Element == LapseProject {
