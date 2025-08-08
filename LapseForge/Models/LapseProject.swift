@@ -59,6 +59,15 @@ final class LapseSequence {
         "sequence_\(id.uuidString)/"
     }
     
+    func captureData(at index: Int) -> Data? {
+        do {
+            return try FileManager.default.getPhoto(from: self, at: index)
+        } catch {
+            print("No se pudo obtener la captura \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
     init(captures: [Date] = [], expectedDuration: TimeInterval? = nil) {
         self.id = UUID()
         self.captures = captures

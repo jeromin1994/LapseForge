@@ -167,8 +167,7 @@ extension Recorder: AVCapturePhotoCaptureDelegate {
 
 extension Date {
     var imageName: String {
-        let now = Date()
-        let timestamp = Int(now.timeIntervalSince1970 * 1000)
+        let timestamp = Int(self.timeIntervalSince1970 * 1000)
         let filename = "frame_\(timestamp).jpg"
         return filename
     }
@@ -176,6 +175,7 @@ extension Date {
 
 enum FileManagerError: Error {
     case invalidDirectory
+    case noPhotoAtIndex
 }
 
 extension FileManager {
@@ -201,5 +201,23 @@ extension FileManager {
         sequence.captures.append(now)
         
         print("✅ Imagen guardada en \(url)")
+    }
+    
+    func getPhoto(from sequence: LapseSequence, at index: Int) throws -> Data {
+        guard let sequenceDirectory = urls(for: .documentDirectory, in: .userDomainMask)
+            .first?.appending(path: sequence.directoryName)
+        else {
+            print("No se pudo generar la URL del archivo")
+            throw FileManagerError.invalidDirectory
+        }
+        
+        guard let date = sequence.captures.at(index) else {
+            print("No se pudo obtener la captura por el indice")
+            throw FileManagerError.noPhotoAtIndex
+        }
+        
+        let capturePath = sequenceDirectory.appendingPathComponent(date.imageName)
+        
+        return try Data(contentsOf: capturePath)
     }
 }

@@ -44,12 +44,17 @@ struct TimeLineView: View {
                     .prefix(count),
                 id: \.offset
             ) { index in
-                Text("\(index.offset)")
-                    .font(.footnote)
-                    .frame(width: CGFloat(imageWidth), height: 40)
-                    .background(Color.gray)
+                if let data = sequence.captureData(at: index.offset),
+                   let image = UIImage(data: data) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: CGFloat(imageWidth), height: 40)
+                } else {
+                    Color.gray
+                        .frame(width: CGFloat(imageWidth), height: 40)
+                }
             }
-            
         }
     }
     
@@ -69,8 +74,13 @@ struct TimeLineView: View {
                         .frame(width: width, alignment: .leading)
                         .clipped()
                     
-                    Text("\(Int(duration))s")
-                        .font(.caption)
+                    HStack {
+                        Text("\(Int(duration))s")
+                            .font(.caption)
+                        Spacer(minLength: .zero)
+                        Text("\(sequence.captures.count) frames")
+                            .font(.caption)
+                    }
                 }
                 .frame(width: width)
                 .background(Color.secondary)
