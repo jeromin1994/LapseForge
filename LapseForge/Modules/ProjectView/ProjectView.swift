@@ -11,7 +11,7 @@ struct ProjectView: View {
     @Environment(\.modelContext) private var modelContext
     let project: LapseProject
     
-    @State private var currentSequence: LapseSequence?
+    @State private var selectedSequence: LapseSequence?
     @State private var scrubber: TimeInterval?
     
     var body: some View {
@@ -25,20 +25,13 @@ struct ProjectView: View {
             // Línea de tiempo avanzada
             TimeLineView(
                 project: project,
-                currentSequence: $currentSequence,
+                selectedSequence: $selectedSequence,
                 scrubber: $scrubber
             )
             
             // Botonera de control
             HStack {
-                Button(
-                    action: {
-                        currentSequence = .init(expectedDuration: 10)
-                    }, label: {
-                        Image(systemName: "record.circle")
-                            .font(.title)
-                    }
-                )
+                
                 
                 Spacer()
             }
@@ -48,7 +41,7 @@ struct ProjectView: View {
         }
         .navigationTitle(project.title)
         .sheet(
-            item: $currentSequence,
+            item: $selectedSequence,
             content: { sequence in
                 CaptureSequenceView(
                     sequence: sequence,

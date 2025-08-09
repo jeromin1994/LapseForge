@@ -10,7 +10,7 @@ import SwiftUI
 struct TimeLineView: View {
     @State private var scrollContentHeight: CGFloat = 0
     let project: LapseProject
-    @Binding var currentSequence: LapseSequence?
+    @Binding var selectedSequence: LapseSequence?
     @Binding var scrubber: TimeInterval?
     
     let scrollCoordinateSpace: NamedCoordinateSpace = .named("Scroll")
@@ -87,7 +87,7 @@ struct TimeLineView: View {
                 .background(Color.secondary)
                 .cornerRadius(4)
                 .onTapGesture {
-                    currentSequence = sequence
+                    selectedSequence = sequence
                 }
                 
                 Spacer().frame(width: padding)
@@ -124,28 +124,45 @@ struct TimeLineView: View {
         }
     }
     
-    var body: some View {
-        ZStack {
-            ScrollView(.horizontal, showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 8) {
-                    // Marcas de tiempo
-                    timeMarkers
-                    
-                    // Secuencias
-                    sequencesViews
-                }
-                .background {
-                    backgroundReader
-                }
+    @ViewBuilder
+    var addSequenceButton: some View {
+        Button(
+            action: {
+                selectedSequence = .init(expectedDuration: 10)
+            }, label: {
+                Image(systemName: "plus.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: max(scrollContentHeight - 32, 20))
             }
-            .coordinateSpace(scrollCoordinateSpace)
-            
-            scrubberLine
-            
+        )
+        .padding(.horizontal)
+        .background(
+            .ultraThinMaterial
+        )
+        .clipShape(.circle)
+
+    }
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 4) {
+                // Marcas de tiempo
+                timeMarkers
+                
+                // Secuencias
+                sequencesViews
+            }
+            .background {
+                backgroundReader
+            }
         }
-        .onChange(of: scrubber) { _, newSecond in
-            guard let newSecond else { return }
-            print("Instante en el centro: \(newSecond) segundos")
+        .coordinateSpace(scrollCoordinateSpace)
+        .overlay {
+            scrubberLine
+        }
+        .overlay(alignment: .trailing) {
+            addSequenceButton
         }
     }
     
