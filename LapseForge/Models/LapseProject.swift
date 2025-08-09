@@ -24,6 +24,30 @@ final class LapseProject {
     var totalDuration: TimeInterval {
         sequences.compactMap(\.expectedDuration).reduce(0, +)
     }
+    
+    func captureData(at time: TimeInterval) -> Data? {
+        var accumulatedTime: TimeInterval = 0
+        
+        for sequence in sequences {
+            guard let duration = sequence.expectedDuration else { continue }
+            
+            let sequenceEndTime = accumulatedTime + duration
+            if time >= accumulatedTime && time <= sequenceEndTime {
+                // Estamos dentro de esta secuencia
+                let relativeTime = time - accumulatedTime
+                // Calcular índice aproximado en base al número de capturas y duración
+                if duration > 0, !sequence.captures.isEmpty {
+                    let secondsPerFrame = duration / Double(sequence.captures.count)
+                    let index = Int(relativeTime / secondsPerFrame)
+                    let safeIndex = max(0, min(index, sequence.captures.count - 1))
+                    return sequence.captureData(at: safeIndex)
+                }
+            }
+            accumulatedTime += duration
+        }
+        
+        return nil
+    }
 }
 
 extension Array where Element == LapseProject {
