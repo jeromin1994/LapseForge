@@ -19,6 +19,7 @@
 		74BD695C2E43CFD300532A24 /* CaptureSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD695B2E43CFD300532A24 /* CaptureSequenceView.swift */; };
 		74BD695F2E46586800532A24 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD695E2E46586800532A24 /* TimeLineView.swift */; };
 		74BD69622E46588700532A24 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD69612E46588700532A24 /* TimeInterval+Extension.swift */; };
+		74BD69642E475E3100532A24 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD69632E475E3100532A24 /* PreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		74BD695B2E43CFD300532A24 /* CaptureSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSequenceView.swift; sourceTree = "<group>"; };
 		74BD695E2E46586800532A24 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
 		74BD69612E46588700532A24 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
+		74BD69632E475E3100532A24 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				74BD69592E43CB5200532A24 /* ProjectView.swift */,
 				74BD695E2E46586800532A24 /* TimeLineView.swift */,
+				74BD69632E475E3100532A24 /* PreviewView.swift */,
 			);
 			path = ProjectView;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				74BD695C2E43CFD300532A24 /* CaptureSequenceView.swift in Sources */,
 				7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */,
+				74BD69642E475E3100532A24 /* PreviewView.swift in Sources */,
 				7448D6412E3FD17600D0CB5C /* Utils.swift in Sources */,
 				74BD695A2E43CB5200532A24 /* ProjectView.swift in Sources */,
 				7448D6632E41185900D0CB5C /* ProjectsListView.swift in Sources */,
