@@ -9,9 +9,24 @@ import Foundation
 
 extension TimeInterval {
     var timeString: String {
-        let time = Int(self)
-        let minutes = time / 60
-        let seconds = time % 60
         return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    var seconds: Int {
+        get {
+            Int(self) % 60
+        }
+        set {
+            self = TimeInterval(minutes * 60 + newValue)
+        }
+    }
+    
+    var minutes: Int {
+        get {
+            Int(self) / 60
+        }
+        set {
+            self = TimeInterval(newValue * 60 + seconds)
+        }
     }
 }

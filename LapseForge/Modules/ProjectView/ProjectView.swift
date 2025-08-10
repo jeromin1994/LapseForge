@@ -9,10 +9,16 @@ import SwiftUI
 
 struct ProjectView: View {
     @Environment(\.modelContext) private var modelContext
-    let project: LapseProject
+    var project: LapseProject
     
     @State private var selectedSequence: LapseSequence?
     @State private var scrubber: TimeInterval?
+    
+    var currentSequence: LapseSequence? {
+        guard let scrubber else { return nil }
+        let sequence = project.sequence(at: scrubber)?.sequence
+        return sequence
+    }
     
     var body: some View {
         VStack(spacing: 16) {
@@ -21,7 +27,7 @@ struct ProjectView: View {
                 project: project,
                 scrubber: $scrubber
             )
-                
+            
             // Línea de tiempo avanzada
             TimeLineView(
                 project: project,
@@ -29,17 +35,21 @@ struct ProjectView: View {
                 scrubber: $scrubber
             )
             
-            // Botonera de control
-            HStack {
-                
-                
-                Spacer()
+            //
+            if let currentSequence {
+                ConfigurationSequenceView(currentSequence: currentSequence)
             }
-            .padding(.horizontal)
-            
-            Spacer()
         }
         .navigationTitle(project.title)
+        .toolbar(content: {
+            ToolbarItem {
+                Button {
+                    saveProject()
+                } label: {
+                    Text("Guardar")
+                }
+            }
+        })
         .sheet(
             item: $selectedSequence,
             content: { sequence in
@@ -55,6 +65,10 @@ struct ProjectView: View {
         if !project.sequences.contains(sequence) {
             project.sequences.append(sequence)
         }
+        saveProject()
+    }
+    
+    private func saveProject() {
         do {
             try modelContext.save()
         } catch {
@@ -63,3 +77,8 @@ struct ProjectView: View {
     }
 }
 
+#Preview {
+    NavigationStack {
+        ProjectView(project: .mock)
+    }
+}

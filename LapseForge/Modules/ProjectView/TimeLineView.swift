@@ -11,6 +11,7 @@ struct TimeLineView: View {
     @State private var scrollContentHeight: CGFloat = 0
     let project: LapseProject
     @Binding var selectedSequence: LapseSequence?
+    // TODO: Actualizar el scrubber repinta toda la vista, en este caso no hace falta repintarla, probar en vez de con un binding con un completion que lo actualize arriba.
     @Binding var scrubber: TimeInterval?
     
     let scrollCoordinateSpace: NamedCoordinateSpace = .named("Scroll")
@@ -64,7 +65,7 @@ struct TimeLineView: View {
         HStack(alignment: .bottom, spacing: 0) {
             Spacer().frame(width: horizontalInset, height: 10)
             ForEach(project.sequences) { sequence in
-                let duration = sequence.expectedDuration ?? 1
+                let duration = sequence.expectedDuration
                 let width = CGFloat(duration) * pixelsPerSecond
                 let padding: CGFloat = 2
                 let count = Int(ceil(width / CGFloat(imageWidth)))
@@ -167,6 +168,8 @@ struct TimeLineView: View {
     }
     
     private func updateSelectedSecond(withOffset offset: CGFloat) {
-        scrubber = max(min(-offset / pixelsPerSecond, project.totalDuration), .zero)
+        Task {
+            scrubber = max(min(-offset / pixelsPerSecond, project.totalDuration), .zero)
+        }
     }
 }

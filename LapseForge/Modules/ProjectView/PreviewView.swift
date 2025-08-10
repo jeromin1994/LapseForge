@@ -13,7 +13,6 @@ struct PreviewView: View {
     
     var body: some View {
         Color.gray
-            .frame(height: 200)
             .overlay {
                 if let scrubber,
                    let data = project.captureData(at: scrubber),
@@ -21,7 +20,6 @@ struct PreviewView: View {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 200)
                 } else {
                     Text("Preview")
                         .foregroundColor(.white)

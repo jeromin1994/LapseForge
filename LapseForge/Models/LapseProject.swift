@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import UIKit
 
 @Model
 final class LapseProject {
@@ -25,28 +26,40 @@ final class LapseProject {
         sequences.compactMap(\.expectedDuration).reduce(0, +)
     }
     
-    func captureData(at time: TimeInterval) -> Data? {
+    func sequence(at time: TimeInterval) -> (sequence: LapseSequence, relativeTime: TimeInterval)? {
         var accumulatedTime: TimeInterval = 0
-        
         for sequence in sequences {
-            guard let duration = sequence.expectedDuration else { continue }
-            
+            let duration = sequence.expectedDuration
             let sequenceEndTime = accumulatedTime + duration
             if time >= accumulatedTime && time <= sequenceEndTime {
-                // Estamos dentro de esta secuencia
                 let relativeTime = time - accumulatedTime
-                // Calcular índice aproximado en base al número de capturas y duración
-                if duration > 0, !sequence.captures.isEmpty {
-                    let secondsPerFrame = duration / Double(sequence.captures.count)
-                    let index = Int(relativeTime / secondsPerFrame)
-                    let safeIndex = max(0, min(index, sequence.captures.count - 1))
-                    return sequence.captureData(at: safeIndex)
-                }
+                return (sequence, relativeTime)
             }
             accumulatedTime += duration
         }
-        
         return nil
+    }
+    
+    func captureData(at time: TimeInterval) -> Data? {
+        guard let (sequence, relativeTime) = sequence(at: time) else {
+            return nil
+        }
+        let duration = sequence.expectedDuration
+        guard duration > 0,
+              !sequence.captures.isEmpty else {
+            return nil
+        }
+        
+        let secondsPerFrame = duration / Double(sequence.captures.count)
+        let index = Int(relativeTime / secondsPerFrame)
+        let safeIndex = max(0, min(index, sequence.captures.count - 1))
+        return sequence.captureData(at: safeIndex)
+    }
+}
+
+extension LapseProject {
+    static var mock: Self {
+        .init(createdDate: .now, title: "Mock", sequences: [.mock])
     }
 }
 
@@ -76,8 +89,16 @@ extension Array where Element == LapseProject {
 @Model
 final class LapseSequence {
     var id: UUID
+    var title: String?
     var captures: [Date]
-    var expectedDuration: TimeInterval?
+    var expectedDuration: TimeInterval = 10
+    var reversed: Bool = false
+    
+    init(captures: [Date] = [], expectedDuration: TimeInterval = 10) {
+        self.id = UUID()
+        self.captures = captures
+        self.expectedDuration = expectedDuration
+    }
     
     var directoryName: String {
         "sequence_\(id.uuidString)/"
@@ -92,9 +113,17 @@ final class LapseSequence {
         }
     }
     
-    init(captures: [Date] = [], expectedDuration: TimeInterval? = nil) {
-        self.id = UUID()
-        self.captures = captures
-        self.expectedDuration = expectedDuration
+    func rotate() {
+        // TODO: Pensar cómo hacerlo para que sea eficiente
+    }
+    
+}
+
+extension LapseSequence {
+    static var mock: Self {
+        .init(
+            captures: (0..<100).map({ i in Date.now.addingTimeInterval(TimeInterval(i))}),
+            expectedDuration: 30
+        )
     }
 }

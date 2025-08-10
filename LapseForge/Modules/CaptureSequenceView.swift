@@ -178,6 +178,7 @@ enum FileManagerError: Error {
     case noPhotoAtIndex
 }
 
+// TODO: Mover
 extension FileManager {
     func savePhoto(_ photo: Data, to sequence: LapseSequence) throws {
         guard let sequenceDirectory = urls(for: .documentDirectory, in: .userDomainMask)
@@ -211,7 +212,7 @@ extension FileManager {
             throw FileManagerError.invalidDirectory
         }
         
-        guard let date = sequence.captures.at(index) else {
+        guard let date = sequence.captures.at(index, reversed: sequence.reversed) else {
             print("No se pudo obtener la captura por el indice")
             throw FileManagerError.noPhotoAtIndex
         }
