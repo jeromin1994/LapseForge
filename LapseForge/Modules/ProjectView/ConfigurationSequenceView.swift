@@ -40,7 +40,8 @@ struct ConfigurationSequenceView: View {
                     set: { new in
                         currentSequence.expectedDuration = new
                     }
-                )
+                ),
+                min: 5.0
             )
         }
     }

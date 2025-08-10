@@ -61,18 +61,18 @@ struct TimeLineView: View {
     @ViewBuilder
     var sequencesViews: some View {
         let horizontalInset: CGFloat = UIScreen.main.bounds.width/2
-        HStack(alignment: .bottom, spacing: 0) {
+        HStack(alignment: .top, spacing: 0) {
             Spacer().frame(width: horizontalInset, height: 10)
             ForEach(project.sequences) { sequence in
                 let duration = sequence.expectedDuration
-                let width = CGFloat(duration) * pixelsPerSecond
+                let width = max(CGFloat(duration) * pixelsPerSecond, 1)
                 let padding: CGFloat = 2
                 let count = Int(ceil(width / CGFloat(imageWidth)))
                 let step = max(1, sequence.captures.count / count)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     capturesView(for: sequence, count: count, step: step)
-                        .frame(width: width - padding, alignment: .leading)
+                        .frame(width: max(width - padding, .zero), alignment: .leading)
                         .clipped()
                     
                     HStack {
@@ -83,7 +83,7 @@ struct TimeLineView: View {
                             .font(.caption)
                     }
                 }
-                .frame(width: width - padding)
+                .frame(width: max(width - padding, .zero))
                 .background(Color.secondary)
                 .cornerRadius(4)
                 .onTapGesture {
