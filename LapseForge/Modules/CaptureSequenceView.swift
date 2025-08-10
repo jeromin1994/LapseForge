@@ -158,7 +158,7 @@ extension Recorder: AVCapturePhotoCaptureDelegate {
         }
         
         do {
-            try FileManager.default.savePhoto(data, to: sequence)
+            try CustomFileManager.shared.savePhoto(data, to: sequence)
         } catch {
             print("❌ Error al guardar la imagen: \(error.localizedDescription)")
         }
@@ -170,55 +170,5 @@ extension Date {
         let timestamp = Int(self.timeIntervalSince1970 * 1000)
         let filename = "frame_\(timestamp).jpg"
         return filename
-    }
-}
-
-enum FileManagerError: Error {
-    case invalidDirectory
-    case noPhotoAtIndex
-}
-
-// TODO: Mover
-extension FileManager {
-    func savePhoto(_ photo: Data, to sequence: LapseSequence) throws {
-        guard let sequenceDirectory = urls(for: .documentDirectory, in: .userDomainMask)
-            .first?.appending(path: sequence.directoryName)
-        else {
-            print("No se pudo generar la URL del archivo")
-            throw FileManagerError.invalidDirectory
-        }
-        
-        try FileManager.default.createDirectory(at: sequenceDirectory, withIntermediateDirectories: true)
-        
-        let now = Date()
-        
-        let url = sequenceDirectory.appendingPathComponent(now.imageName)
-        
-        if FileManager.default.fileExists(atPath: url.path) {
-            try FileManager.default.removeItem(at: url)
-        }
-        try photo.write(to: url)
-        
-        sequence.captures.append(now)
-        
-        print("✅ Imagen guardada en \(url)")
-    }
-    
-    func getPhoto(from sequence: LapseSequence, at index: Int) throws -> Data {
-        guard let sequenceDirectory = urls(for: .documentDirectory, in: .userDomainMask)
-            .first?.appending(path: sequence.directoryName)
-        else {
-            print("No se pudo generar la URL del archivo")
-            throw FileManagerError.invalidDirectory
-        }
-        
-        guard let date = sequence.captures.at(index, reversed: sequence.reversed) else {
-            print("No se pudo obtener la captura por el indice")
-            throw FileManagerError.noPhotoAtIndex
-        }
-        
-        let capturePath = sequenceDirectory.appendingPathComponent(date.imageName)
-        
-        return try Data(contentsOf: capturePath)
     }
 }

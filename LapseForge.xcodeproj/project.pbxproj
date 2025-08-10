@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		741AF8332E48C0FA009ACEFA /* ConfigurationSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8322E48C0FA009ACEFA /* ConfigurationSequenceView.swift */; };
+		741AF8352E490089009ACEFA /* CustomFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8342E490082009ACEFA /* CustomFileManager.swift */; };
 		7448D62C2E3FCF5600D0CB5C /* DeveloperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7448D62B2E3FCF5600D0CB5C /* DeveloperKit */; };
 		7448D6332E3FD14500D0CB5C /* ci_post_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */; };
 		7448D6342E3FD14500D0CB5C /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		741AF8322E48C0FA009ACEFA /* ConfigurationSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSequenceView.swift; sourceTree = "<group>"; };
+		741AF8342E490082009ACEFA /* CustomFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFileManager.swift; sourceTree = "<group>"; };
 		7448D6102E3FCBC100D0CB5C /* LapseForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LapseForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		7448D63F2E3FD16D00D0CB5C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				741AF8342E490082009ACEFA /* CustomFileManager.swift */,
 				7448D6402E3FD17600D0CB5C /* Utils.swift */,
 			);
 			path = Utils;
@@ -237,6 +240,7 @@
 			files = (
 				74BD69692E477FB700532A24 /* TimeIntervalPicker.swift in Sources */,
 				74BD695C2E43CFD300532A24 /* CaptureSequenceView.swift in Sources */,
+				741AF8352E490089009ACEFA /* CustomFileManager.swift in Sources */,
 				7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */,
 				74BD696B2E47A79200532A24 /* Array+Extension.swift in Sources */,
 				74BD69642E475E3100532A24 /* PreviewView.swift in Sources */,

@@ -106,7 +106,7 @@ final class LapseSequence {
     
     func captureData(at index: Int) -> Data? {
         do {
-            return try FileManager.default.getPhoto(from: self, at: index)
+            return try CustomFileManager.shared.getPhoto(from: self, at: index)
         } catch {
             print("No se pudo obtener la captura \(error.localizedDescription)")
             return nil
