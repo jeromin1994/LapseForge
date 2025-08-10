@@ -7,15 +7,21 @@
 
 import SwiftUI
 
+private class ProjectViewModel: ObservableObject {
+    @Published var selectedSequence: LapseSequence?
+    @Published var scrubber: TimeInterval?
+}
+
 struct ProjectView: View {
     @Environment(\.modelContext) private var modelContext
     var project: LapseProject
     
-    @State private var selectedSequence: LapseSequence?
-    @State private var scrubber: TimeInterval?
+    @StateObject private var viewModel = ProjectViewModel()
     
     var currentSequence: LapseSequence? {
-        guard let scrubber else { return nil }
+        guard let scrubber = viewModel.scrubber else {
+            return nil
+        }
         let sequence = project.sequence(at: scrubber)?.sequence
         return sequence
     }
@@ -25,16 +31,23 @@ struct ProjectView: View {
             // Previsualización
             PreviewView(
                 project: project,
-                scrubber: $scrubber
+                scrubber: $viewModel.scrubber
             )
             
             // Línea de tiempo avanzada
             TimeLineView(
                 project: project,
-                selectedSequence: $selectedSequence,
-                scrubber: $scrubber
+                updateSelectedSequence: { [weak viewModel] selectedSequence in
+                    runOnMainThread {
+                        viewModel?.selectedSequence = selectedSequence
+                    }
+                },
+                updateScrubber: { [weak viewModel] newScrubber in
+                    runOnMainThread {
+                        viewModel?.scrubber = newScrubber
+                    }
+                }
             )
-            
             //
             if let currentSequence {
                 ConfigurationSequenceView(currentSequence: currentSequence)
@@ -51,7 +64,7 @@ struct ProjectView: View {
             }
         })
         .sheet(
-            item: $selectedSequence,
+            item: $viewModel.selectedSequence,
             content: { sequence in
                 CaptureSequenceView(
                     sequence: sequence,

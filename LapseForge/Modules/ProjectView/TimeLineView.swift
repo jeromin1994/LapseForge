@@ -10,9 +10,8 @@ import SwiftUI
 struct TimeLineView: View {
     @State private var scrollContentHeight: CGFloat = 0
     let project: LapseProject
-    @Binding var selectedSequence: LapseSequence?
-    // TODO: Actualizar el scrubber repinta toda la vista, en este caso no hace falta repintarla, probar en vez de con un binding con un completion que lo actualize arriba.
-    @Binding var scrubber: TimeInterval?
+    var updateSelectedSequence: (LapseSequence) -> Void
+    var updateScrubber: (TimeInterval) -> Void
     
     let scrollCoordinateSpace: NamedCoordinateSpace = .named("Scroll")
     let imageWidth = 20
@@ -88,7 +87,7 @@ struct TimeLineView: View {
                 .background(Color.secondary)
                 .cornerRadius(4)
                 .onTapGesture {
-                    selectedSequence = sequence
+                    updateSelectedSequence(sequence)
                 }
                 
                 Spacer().frame(width: padding)
@@ -129,7 +128,7 @@ struct TimeLineView: View {
     var addSequenceButton: some View {
         Button(
             action: {
-                selectedSequence = .init(expectedDuration: 10)
+                updateSelectedSequence(.init())
             }, label: {
                 Image(systemName: "plus.circle")
                     .resizable()
@@ -168,8 +167,7 @@ struct TimeLineView: View {
     }
     
     private func updateSelectedSecond(withOffset offset: CGFloat) {
-        Task {
-            scrubber = max(min(-offset / pixelsPerSecond, project.totalDuration), .zero)
-        }
+        let newScrubber = max(min(-offset / pixelsPerSecond, project.totalDuration), .zero)
+        updateScrubber(newScrubber)
     }
 }
