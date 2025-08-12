@@ -15,11 +15,12 @@ struct PreviewView: View {
         Color.gray
             .overlay {
                 if let scrubber,
-                   let data = project.captureData(at: scrubber),
-                   let image = UIImage(data: data) {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
+                   let (sequence, index) = project.sequenceAndIndex(at: scrubber) {
+                    CaptureView(
+                        sequence: sequence,
+                        index: index,
+                        scaleType: .fit
+                    )
                 } else {
                     Text("Preview")
                         .foregroundColor(.white)

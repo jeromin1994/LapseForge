@@ -63,9 +63,8 @@ struct ConfigurationSequenceView: View {
             action: {
                 currentSequence.rotate()
             },
-            systemImageName: "rotate.left",
-            // TODO: Cambiar este texto
-            title: "Catálogo de Frames"
+            systemImageName: "rotate.right",
+            title: currentSequence.rotation.title
         )
     }
     

@@ -44,16 +44,12 @@ struct TimeLineView: View {
                     .prefix(count),
                 id: \.offset
             ) { index in
-                if let data = sequence.captureData(at: index.offset),
-                   let image = UIImage(data: data) {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: CGFloat(imageWidth), height: 40)
-                } else {
-                    Color.gray
-                        .frame(width: CGFloat(imageWidth), height: 40)
-                }
+                CaptureView(
+                    sequence: sequence,
+                    index: index.offset,
+                    scaleType: .fill
+                )
+                .frame(width: CGFloat(imageWidth), height: 40)
             }
         }
     }

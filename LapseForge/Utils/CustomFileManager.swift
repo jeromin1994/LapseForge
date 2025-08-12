@@ -38,7 +38,7 @@ class CustomFileManager {
         print("✅ Imagen guardada en \(url)")
     }
     
-    func getPhoto(from sequence: LapseSequence, at index: Int) throws -> Data {
+    func getPhotoUrl(from sequence: LapseSequence, at index: Int) throws -> URL {
         guard let sequenceDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
             .first?.appending(path: sequence.directoryName)
         else {
@@ -50,8 +50,13 @@ class CustomFileManager {
             print("No se pudo obtener la captura por el indice")
             throw FileManagerError.noPhotoAtIndex
         }
-        
         let capturePath = sequenceDirectory.appendingPathComponent(date.imageName)
+        
+        return capturePath
+    }
+    
+    func getPhoto(from sequence: LapseSequence, at index: Int) throws -> Data {
+        let capturePath = try getPhotoUrl(from: sequence, at: index)
         
         return try Data(contentsOf: capturePath)
     }

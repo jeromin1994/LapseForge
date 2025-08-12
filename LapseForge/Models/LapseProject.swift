@@ -40,7 +40,7 @@ final class LapseProject {
         return nil
     }
     
-    func captureData(at time: TimeInterval) -> Data? {
+    func sequenceAndIndex(at time: TimeInterval) -> (sequence: LapseSequence, index: Int)? {
         guard let (sequence, relativeTime) = sequence(at: time) else {
             return nil
         }
@@ -53,6 +53,21 @@ final class LapseProject {
         let secondsPerFrame = duration / Double(sequence.captures.count)
         let index = Int(relativeTime / secondsPerFrame)
         let safeIndex = max(0, min(index, sequence.captures.count - 1))
+        
+        return (sequence, safeIndex)
+    }
+    
+    func captureUrl(at time: TimeInterval) -> URL? {
+        guard let (sequence, safeIndex) = sequenceAndIndex(at: time) else {
+            return nil
+        }
+        return sequence.captureUrl(at: safeIndex)
+    }
+    
+    func captureData(at time: TimeInterval) -> Data? {
+        guard let (sequence, safeIndex) = sequenceAndIndex(at: time) else {
+            return nil
+        }
         return sequence.captureData(at: safeIndex)
     }
 }
@@ -93,6 +108,16 @@ final class LapseSequence {
     var captures: [Date]
     var expectedDuration: TimeInterval = 10
     var reversed: Bool = false
+    private var rotationRawValue: Int?
+    
+    var rotation: Rotation {
+        get {
+            Rotation(rawValue: rotationRawValue ?? .zero) ?? .none
+        }
+        set {
+            rotationRawValue = newValue.rawValue
+        }
+    }
     
     init(captures: [Date] = [], expectedDuration: TimeInterval = 10) {
         self.id = UUID()
@@ -104,17 +129,82 @@ final class LapseSequence {
         "sequence_\(id.uuidString)/"
     }
     
-    func captureData(at index: Int) -> Data? {
+    func captureUrl(at index: Int) -> URL? {
         do {
-            return try CustomFileManager.shared.getPhoto(from: self, at: index)
+            let url = try CustomFileManager.shared.getPhotoUrl(from: self, at: index)
+            return url
         } catch {
             print("No se pudo obtener la captura \(error.localizedDescription)")
             return nil
         }
     }
     
+    func captureData(at index: Int) -> Data? {
+        do {
+            let data = try CustomFileManager.shared.getPhoto(from: self, at: index)
+            return applyRotation(to: data)
+        } catch {
+            print("No se pudo obtener la captura \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    private func applyRotation(to data: Data) -> Data? {
+        guard rotation != .none else { return data }
+        guard let image = UIImage(data: data) else { return data }
+        
+        let radians = CGFloat(rotation.rawValue) * .pi / 180
+        let rotatedSize: CGSize
+        switch rotation {
+        case .none, .clockwise180: rotatedSize = image.size
+            
+        case .clockwise90, .counterClockwise90: rotatedSize = CGSize(width: image.size.height, height: image.size.width)
+        }
+        
+        UIGraphicsBeginImageContext(rotatedSize)
+        guard let context = UIGraphicsGetCurrentContext() else { return data }
+        
+        // Mover el origen al centro y rotar
+        context.translateBy(x: rotatedSize.width / 2, y: rotatedSize.height / 2)
+        context.rotate(by: radians)
+        image.draw(in: CGRect(x: -image.size.width / 2,
+                              y: -image.size.height / 2,
+                              width: image.size.width,
+                              height: image.size.height))
+        
+        let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return rotatedImage?.jpegData(compressionQuality: 1.0)
+    }
+    
     func rotate() {
-        // TODO: Pensar cómo hacerlo para que sea eficiente
+        rotation = rotation.next
+    }
+    
+    enum Rotation: Int {
+        case none = 0
+        case clockwise90 = 90
+        case clockwise180 = 180
+        case counterClockwise90 = 270
+        
+        var next: Rotation {
+            switch self {
+            case .none: .clockwise90
+            case .clockwise90: .clockwise180
+            case .clockwise180: .counterClockwise90
+            case .counterClockwise90: .none
+            }
+        }
+        
+        var title: String {
+            switch self {
+            case .none: "No rotación"
+            case .clockwise90: "Rotado 90º"
+            case .clockwise180: "Rotado 180º"
+            case .counterClockwise90: "Rotado 270º"
+            }
+        }
     }
     
 }
