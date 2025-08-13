@@ -8,6 +8,7 @@ import SwiftUI
 
 struct ConfigurationSequenceView: View {
     var currentSequence: LapseSequence
+    @Binding var catalogSequence: LapseSequence?
     
     @ViewBuilder
     var nameAndDate: some View {
@@ -72,7 +73,7 @@ struct ConfigurationSequenceView: View {
     var catalogButton: some View {
         CustomButton(
             action: {
-                
+                catalogSequence = currentSequence
             },
             systemImageName: "photo.stack",
             title: "Catálogo de Frames"
@@ -116,5 +117,8 @@ private struct CustomButton: View {
 }
 
 #Preview {
-    ConfigurationSequenceView(currentSequence: .mock)
+    ConfigurationSequenceView(
+        currentSequence: .mock,
+        catalogSequence: .constant(nil)
+    )
 }

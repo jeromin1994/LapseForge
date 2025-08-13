@@ -46,7 +46,7 @@ class CustomFileManager {
             throw FileManagerError.invalidDirectory
         }
         
-        guard let date = sequence.captures.at(index, reversed: sequence.reversed) else {
+        guard let date = sequence.captures[at: index, reversed: sequence.reversed] else {
             print("No se pudo obtener la captura por el indice")
             throw FileManagerError.noPhotoAtIndex
         }

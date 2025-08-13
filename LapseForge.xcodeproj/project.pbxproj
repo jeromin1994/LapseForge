@@ -10,6 +10,7 @@
 		741AF8332E48C0FA009ACEFA /* ConfigurationSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8322E48C0FA009ACEFA /* ConfigurationSequenceView.swift */; };
 		741AF8352E490089009ACEFA /* CustomFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8342E490082009ACEFA /* CustomFileManager.swift */; };
 		741AF8382E4B49B4009ACEFA /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8372E4B49B4009ACEFA /* CaptureView.swift */; };
+		741AF83A2E4B4B5D009ACEFA /* SequenceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8392E4B4B5D009ACEFA /* SequenceCatalog.swift */; };
 		7448D62C2E3FCF5600D0CB5C /* DeveloperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7448D62B2E3FCF5600D0CB5C /* DeveloperKit */; };
 		7448D6332E3FD14500D0CB5C /* ci_post_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */; };
 		7448D6342E3FD14500D0CB5C /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */; };
@@ -32,6 +33,7 @@
 		741AF8322E48C0FA009ACEFA /* ConfigurationSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSequenceView.swift; sourceTree = "<group>"; };
 		741AF8342E490082009ACEFA /* CustomFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFileManager.swift; sourceTree = "<group>"; };
 		741AF8372E4B49B4009ACEFA /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
+		741AF8392E4B4B5D009ACEFA /* SequenceCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceCatalog.swift; sourceTree = "<group>"; };
 		7448D6102E3FCBC100D0CB5C /* LapseForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LapseForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
@@ -63,14 +65,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		741AF8362E4B4992009ACEFA /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				741AF8372E4B49B4009ACEFA /* CaptureView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		7448D6072E3FCBC100D0CB5C = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +129,7 @@
 				7448D6622E41185900D0CB5C /* ProjectsListView.swift */,
 				74BD695D2E46585200532A24 /* ProjectView */,
 				74BD695B2E43CFD300532A24 /* CaptureSequenceView.swift */,
+				741AF8392E4B4B5D009ACEFA /* SequenceCatalog.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -142,7 +137,6 @@
 		74BD695D2E46585200532A24 /* ProjectView */ = {
 			isa = PBXGroup;
 			children = (
-				741AF8362E4B4992009ACEFA /* Components */,
 				74BD69592E43CB5200532A24 /* ProjectView.swift */,
 				74BD69632E475E3100532A24 /* PreviewView.swift */,
 				74BD695E2E46586800532A24 /* TimeLineView.swift */,
@@ -165,6 +159,7 @@
 			children = (
 				74BD69682E477FB700532A24 /* TimeIntervalPicker.swift */,
 				74BD69662E477F9D00532A24 /* IntPicker.swift */,
+				741AF8372E4B49B4009ACEFA /* CaptureView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -253,6 +248,7 @@
 				74BD695C2E43CFD300532A24 /* CaptureSequenceView.swift in Sources */,
 				741AF8352E490089009ACEFA /* CustomFileManager.swift in Sources */,
 				7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */,
+				741AF83A2E4B4B5D009ACEFA /* SequenceCatalog.swift in Sources */,
 				74BD696B2E47A79200532A24 /* Array+Extension.swift in Sources */,
 				74BD69642E475E3100532A24 /* PreviewView.swift in Sources */,
 				74BD69672E477F9D00532A24 /* IntPicker.swift in Sources */,

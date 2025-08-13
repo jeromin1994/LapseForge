@@ -10,6 +10,8 @@ import SwiftUI
 private class ProjectViewModel: ObservableObject {
     @Published var selectedSequence: LapseSequence?
     @Published var scrubber: TimeInterval?
+    
+    @Published var catalogSequence: LapseSequence?
 }
 
 struct ProjectView: View {
@@ -50,7 +52,10 @@ struct ProjectView: View {
             )
             //
             if let currentSequence {
-                ConfigurationSequenceView(currentSequence: currentSequence)
+                ConfigurationSequenceView(
+                    currentSequence: currentSequence,
+                    catalogSequence: $viewModel.catalogSequence
+                )
             }
         }
         .navigationTitle(project.title)
@@ -69,6 +74,15 @@ struct ProjectView: View {
                 CaptureSequenceView(
                     sequence: sequence,
                     onSaveSequence: onSaveSequence
+                )
+            }
+        )
+        .sheet(
+            item: $viewModel.catalogSequence,
+            content: { sequence in
+                SequenceCatalog(
+                    sequence: sequence,
+                    onSaveSequence: saveProject
                 )
             }
         )

@@ -6,13 +6,18 @@
 //
 
 extension Array {
-    func at(_ index: Int, reversed: Bool = false) -> Element? {
-        guard index >= startIndex,
-              index < endIndex
-        else { return nil }
-        
-        let index = reversed ? count - index - 1 : index
-        
-        return self[index]
+    subscript(at index: Int, reversed reversed: Bool = false) -> Element? {
+        get {
+            guard index >= startIndex, index < endIndex else { return nil }
+            let idx = reversed ? count - index - 1 : index
+            return self[idx]
+        }
+        set {
+            guard index >= startIndex, index < endIndex else { return }
+            let idx = reversed ? count - index - 1 : index
+            if let newValue = newValue {
+                self[idx] = newValue
+            }
+        }
     }
 }
