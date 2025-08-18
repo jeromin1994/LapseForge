@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import DeveloperKit // TODO: Para las alertas. Cuando hagamos publico el repo, habrá que quitar DeveloperKit y por tanto mover esas implementaciones a este proyecto.
 
 struct TimeLineView: View {
     @State private var scrollContentHeight: CGFloat = 0
+    @State private var alertModel: AlertModel?
+    @State private var showPhotoPicker: Bool = false // TODO: Por ahora no hace nada, más que cambiar un flag
     let project: LapseProject
     var updateSelectedSequence: (LapseSequence) -> Void
     var updateScrubber: (TimeInterval) -> Void
@@ -124,8 +127,30 @@ struct TimeLineView: View {
     var addSequenceButton: some View {
         Button(
             action: {
-                updateSelectedSequence(.init())
-            }, label: {
+                let cameraButton = AlertButton(
+                    title: "Cámara",
+                    action: {
+                        updateSelectedSequence(.init())
+                    }
+                )
+                
+                let galeryButton = AlertButton(
+                    title: "Galería",
+                    action: {
+                        showPhotoPicker = true
+                    }
+                )
+                alertModel = .init(
+                    title: "Nueva sequencia",
+                    message: "¿Cómo la quieres crear?",
+                    buttons: [
+                        cameraButton,
+                        galeryButton,
+                        .cancel()
+                    ]
+                )
+            },
+            label: {
                 Image(systemName: "plus.circle")
                     .resizable()
                     .scaledToFit()
@@ -137,7 +162,6 @@ struct TimeLineView: View {
             .ultraThinMaterial
         )
         .clipShape(.circle)
-
     }
     
     var body: some View {
@@ -160,6 +184,7 @@ struct TimeLineView: View {
         .overlay(alignment: .trailing) {
             addSequenceButton
         }
+        .alert(model: $alertModel)
     }
     
     private func updateSelectedSecond(withOffset offset: CGFloat) {

@@ -1,5 +1,5 @@
 {
-  "originHash" : "8882e1d5a64057f97f3dd68cdcfa1cd8b67cbe902082b0e6d0dd00032afdc309",
+  "originHash" : "ba76a891549d0c44b3ed1242f3da898b9b941aba2ff93cc784acca139aeeb63c",
   "pins" : [
     {
       "identity" : "developerkit",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/jeronimocabezuelo/DeveloperKit",
       "state" : {
         "branch" : "main",
-        "revision" : "57d0370ef3a0ac0d103195c663846af5a7c0b3c5"
+        "revision" : "4d0286933466b78d8292fbc451bb3abdadff642e"
       }
     },
     {
