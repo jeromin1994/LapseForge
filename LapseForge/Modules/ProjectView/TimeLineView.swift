@@ -11,10 +11,10 @@ import DeveloperKit // TODO: Para las alertas. Cuando hagamos publico el repo, h
 struct TimeLineView: View {
     @State private var scrollContentHeight: CGFloat = 0
     @State private var alertModel: AlertModel?
-    @State private var showPhotoPicker: Bool = false // TODO: Por ahora no hace nada, más que cambiar un flag
     let project: LapseProject
     var updateSelectedSequence: (LapseSequence) -> Void
     var updateScrubber: (TimeInterval) -> Void
+    var showPhotoPicker: () -> Void
     
     let scrollCoordinateSpace: NamedCoordinateSpace = .named("Scroll")
     let imageWidth = 20
@@ -136,9 +136,7 @@ struct TimeLineView: View {
                 
                 let galeryButton = AlertButton(
                     title: "Galería",
-                    action: {
-                        showPhotoPicker = true
-                    }
+                    action: showPhotoPicker
                 )
                 alertModel = .init(
                     title: "Nueva sequencia",

@@ -10,6 +10,7 @@ import SwiftUI
 private class ProjectViewModel: ObservableObject {
     @Published var selectedSequence: LapseSequence?
     @Published var scrubber: TimeInterval?
+    @Published var showPhotoPicker: Bool = false
     
     @Published var catalogSequence: LapseSequence?
 }
@@ -47,6 +48,11 @@ struct ProjectView: View {
                 updateScrubber: { [weak viewModel] newScrubber in
                     runOnMainThread {
                         viewModel?.scrubber = newScrubber
+                    }
+                },
+                showPhotoPicker: { [weak viewModel] in
+                    runOnMainThread {
+                        viewModel?.showPhotoPicker = true
                     }
                 }
             )
@@ -86,6 +92,22 @@ struct ProjectView: View {
                 )
             }
         )
+        .sheet(isPresented: $viewModel.showPhotoPicker) {
+            PHVideoPicker(
+                isPresented: $viewModel.showPhotoPicker,
+                onPicked: { url in
+                    // Aquí ya tienes el URL del vídeo sin copiarlo
+                    print("Vídeo URL:", url)
+                    // Ejemplo: crear el AVAsset y empezar a extraer frames
+                    // let asset = AVAsset(url: url)
+                    // frameExtractor.generate(from: asset, ...)
+                },
+                onProgress: { p in
+                    // Si quieres mostrar progreso (0…1)
+                    print("Progreso:", p)
+                }
+            )
+        }
     }
     
     private func onSaveSequence(sequence: LapseSequence) {

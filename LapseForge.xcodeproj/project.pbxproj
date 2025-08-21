@@ -19,6 +19,7 @@
 		7448D6412E3FD17600D0CB5C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6402E3FD17600D0CB5C /* Utils.swift */; };
 		7448D6612E41184C00D0CB5C /* LapseProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6602E41184C00D0CB5C /* LapseProject.swift */; };
 		7448D6632E41185900D0CB5C /* ProjectsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6622E41185900D0CB5C /* ProjectsListView.swift */; };
+		747CCCAB2E574A4300050494 /* PHVideoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747CCCAA2E574A4300050494 /* PHVideoPicker.swift */; };
 		74BD695A2E43CB5200532A24 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD69592E43CB5200532A24 /* ProjectView.swift */; };
 		74BD695C2E43CFD300532A24 /* CaptureSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD695B2E43CFD300532A24 /* CaptureSequenceView.swift */; };
 		74BD695F2E46586800532A24 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD695E2E46586800532A24 /* TimeLineView.swift */; };
@@ -43,6 +44,8 @@
 		7448D6402E3FD17600D0CB5C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7448D6602E41184C00D0CB5C /* LapseProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapseProject.swift; sourceTree = "<group>"; };
 		7448D6622E41185900D0CB5C /* ProjectsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListView.swift; sourceTree = "<group>"; };
+		747CCCA92E5748EA00050494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		747CCCAA2E574A4300050494 /* PHVideoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHVideoPicker.swift; sourceTree = "<group>"; };
 		74BD69592E43CB5200532A24 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		74BD695B2E43CFD300532A24 /* CaptureSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSequenceView.swift; sourceTree = "<group>"; };
 		74BD695E2E46586800532A24 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		7448D63A2E3FD15600D0CB5C /* LapseForge */ = {
 			isa = PBXGroup;
 			children = (
+				747CCCA92E5748EA00050494 /* Info.plist */,
 				74BD69652E477F8C00532A24 /* Components */,
 				74BD69602E46587800532A24 /* Extension */,
 				7448D63F2E3FD16D00D0CB5C /* Utils */,
@@ -141,6 +145,7 @@
 				74BD69632E475E3100532A24 /* PreviewView.swift */,
 				74BD695E2E46586800532A24 /* TimeLineView.swift */,
 				741AF8322E48C0FA009ACEFA /* ConfigurationSequenceView.swift */,
+				747CCCAA2E574A4300050494 /* PHVideoPicker.swift */,
 			);
 			path = ProjectView;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				747CCCAB2E574A4300050494 /* PHVideoPicker.swift in Sources */,
 				74BD69692E477FB700532A24 /* TimeIntervalPicker.swift in Sources */,
 				74BD695C2E43CFD300532A24 /* CaptureSequenceView.swift in Sources */,
 				741AF8352E490089009ACEFA /* CustomFileManager.swift in Sources */,
@@ -401,7 +407,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LapseForge/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Uso de camara para captura de imágenes";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Necesitamos acceder a tu galería para importar vídeos y crear tus secuencias de time-lapse.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -445,7 +453,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LapseForge/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Uso de camara para captura de imágenes";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Necesitamos acceder a tu galería para importar vídeos y crear tus secuencias de time-lapse.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
