@@ -9,9 +9,9 @@ import SwiftUI
 
 private struct SequenceCatalogCaptureModel {
     var selected: Bool = false
-    let capture: Date
+    let capture: LapseCapture
     
-    init(capture: Date) {
+    init(capture: LapseCapture) {
         self.capture = capture
     }
 }
@@ -35,39 +35,36 @@ struct SequenceCatalog: View {
     
     @ViewBuilder
     private func captureView(with model: SequenceCatalogCaptureModel) -> some View {
-        if let index = sequence.captures.firstIndex(of: model.capture) {
-            GeometryReader { geo in
-                ZStack {
-                    CaptureView(
-                        sequence: sequence,
-                        index: index
-                    )
-                }
-                .frame(width: geo.size.width, height: geo.size.width)
-                
+        GeometryReader { geo in
+            ZStack {
+                CaptureView(
+                    capture: model.capture
+                )
             }
-            .background(.gray)
-            .overlay {
-                if model.selected {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.blue, lineWidth: 8)
-                }
+            .frame(width: geo.size.width, height: geo.size.width)
+            
+        }
+        .background(.gray)
+        .overlay {
+            if model.selected {
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.blue, lineWidth: 8)
             }
-            .overlay(alignment: .bottomLeading) {
-                let systemName = model.selected ? "checkmark.circle.fill" : "circle"
-                Image(systemName: systemName)
-                    .font(.title2)
-                    .foregroundStyle(model.selected ? .primary : .secondary)
-                    .background(.ultraThinMaterial)
-                    .clipShape(.circle)
-                    .shadow(radius: 3)
-                    .padding(8)
-            }
-            .cornerRadius(8)
-            .aspectRatio(1, contentMode: .fit)
-            .onTapGesture {
-                captures[at: index]?.selected.toggle()
-            }
+        }
+        .overlay(alignment: .bottomLeading) {
+            let systemName = model.selected ? "checkmark.circle.fill" : "circle"
+            Image(systemName: systemName)
+                .font(.title2)
+                .foregroundStyle(model.selected ? .primary : .secondary)
+                .background(.ultraThinMaterial)
+                .clipShape(.circle)
+                .shadow(radius: 3)
+                .padding(8)
+        }
+        .cornerRadius(8)
+        .aspectRatio(1, contentMode: .fit)
+        .onTapGesture {
+            captures[at: model.capture.index]?.selected.toggle()
         }
     }
     
@@ -97,10 +94,7 @@ struct SequenceCatalog: View {
         Button("Borrar Frames", role: .destructive) {
             withAnimation {
                 for capture in captures where capture.selected {
-                    sequence.captures.removeAll(where: {
-                        $0 == capture.capture
-                    })
-                    
+                    sequence.removeCapture(capture.capture)
                 }
                 captures.removeAll(where: \.selected)
             }

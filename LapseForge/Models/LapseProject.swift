@@ -46,13 +46,13 @@ final class LapseProject {
         }
         let duration = sequence.expectedDuration
         guard duration > 0,
-              !sequence.captures.isEmpty else {
+              !sequence.isEmpty else {
             return nil
         }
         
-        let secondsPerFrame = duration / Double(sequence.captures.count)
+        let secondsPerFrame = duration / Double(sequence.count)
         let index = Int(relativeTime / secondsPerFrame)
-        let safeIndex = max(0, min(index, sequence.captures.count - 1))
+        let safeIndex = max(0, min(index, sequence.count - 1))
         
         return (sequence, safeIndex)
     }
@@ -103,12 +103,21 @@ extension Array where Element == LapseProject {
 
 @Model
 final class LapseSequence {
-    var id: UUID
+    private(set) var id: UUID
     var title: String?
-    var captures: [Date]
+    @Relationship(deleteRule: .cascade)
+    var internalCaptures: [LapseCapture]
     var expectedDuration: TimeInterval = 10
     var reversed: Bool = false
     private var rotationRawValue: Int?
+    
+    // MARK: - Cache en memoria
+    @Transient
+    private var shouldRebuildCache: Bool = true
+    @Transient
+    private var capturesCache: [LapseCapture] = []
+    @Transient
+    private var capturesByIndex: [Int: LapseCapture] = [:]
     
     var rotation: Rotation {
         get {
@@ -119,14 +128,62 @@ final class LapseSequence {
         }
     }
     
-    init(captures: [Date] = [], expectedDuration: TimeInterval = 10) {
+    var count: Int { internalCaptures.count }
+    var isEmpty: Bool { internalCaptures.isEmpty }
+    var captures: [LapseCapture] {
+        if shouldRebuildCache {
+            rebuildCache()
+        }
+        return capturesCache
+    }
+    
+    init(captures: [LapseCapture] = [], expectedDuration: TimeInterval = 10) {
         self.id = UUID()
-        self.captures = captures
+        self.internalCaptures = captures
         self.expectedDuration = expectedDuration
+        
+        rebuildCache()
+    }
+    
+    private func rebuildCache() {
+        capturesCache = internalCaptures.sorted { $0.index < $1.index }
+        capturesByIndex = Dictionary(uniqueKeysWithValues: capturesCache.map { ($0.index, $0) })
+        shouldRebuildCache = false
     }
     
     var directoryName: String {
         "sequence_\(id.uuidString)/"
+    }
+    
+    func capture(at index: Int) -> LapseCapture? {
+        if shouldRebuildCache {
+            rebuildCache()
+        }
+        
+        let targetIndex = reversed ? (count - 1 - index) : index
+        return capturesByIndex[targetIndex]
+    }
+    
+    func addCapture(_ capture: LapseCapture) {
+        capture.index = internalCaptures.count
+        internalCaptures.append(capture)
+        shouldRebuildCache = true
+    }
+    
+    func removeCapture(_ capture: LapseCapture) {
+        guard let removedIndex = internalCaptures.firstIndex(where: { $0.id == capture.id }) else { return }
+        removeCapture(at: removedIndex)
+    }
+    
+    func removeCapture(at index: Int) {
+        let removedCapture = internalCaptures.remove(at: index)
+        
+        // Reindexar solo los que están después del eliminado
+        for cap in internalCaptures where cap.index > removedCapture.index {
+            cap.index -= 1
+        }
+        
+        shouldRebuildCache = true
     }
     
     func captureUrl(at index: Int) -> URL? {
@@ -209,10 +266,36 @@ final class LapseSequence {
     
 }
 
+@Model
+final class LapseCapture {
+    private(set) var id: UUID
+    private(set) var date: Date
+    @Relationship(inverse: \LapseSequence.internalCaptures)
+    var sequence: LapseSequence?
+    
+    var index: Int
+    init(id: UUID = UUID(), date: Date = Date(), index: Int? = nil) {
+        self.id = id
+        self.date = date
+        self.index = index ?? -1
+    }
+    
+    var captureData: Data? {
+        sequence?.captureData(at: index)
+    }
+}
+
+extension LapseCapture {
+    var imageName: String {
+        let filename = "frame_\(id.uuidString).jpg"
+        return filename
+    }
+}
+
 extension LapseSequence {
     static var mock: Self {
         .init(
-            captures: (0..<100).map({ i in Date.now.addingTimeInterval(TimeInterval(i))}),
+            captures: (0..<100).map({ i in LapseCapture(index: i) }),
             expectedDuration: 30
         )
     }

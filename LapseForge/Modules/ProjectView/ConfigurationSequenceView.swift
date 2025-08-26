@@ -23,7 +23,7 @@ struct ConfigurationSequenceView: View {
                 )
             )
             if let firstCapture = currentSequence.captures.first {
-                Text(firstCapture, format: Date.FormatStyle(date: .long, time: .standard))
+                Text(firstCapture.date, format: Date.FormatStyle(date: .long, time: .standard))
                     .font(.footnote)
             }
         }

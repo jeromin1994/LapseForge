@@ -24,16 +24,16 @@ class CustomFileManager {
         
         try fileManager.createDirectory(at: sequenceDirectory, withIntermediateDirectories: true)
         
-        let now = Date()
+        let capture = LapseCapture()
         
-        let url = sequenceDirectory.appendingPathComponent(now.imageName)
+        let url = sequenceDirectory.appendingPathComponent(capture.imageName)
         
         if fileManager.fileExists(atPath: url.path) {
             try fileManager.removeItem(at: url)
         }
         try photo.write(to: url)
         
-        sequence.captures.append(now)
+        sequence.addCapture(capture)
         
         print("✅ Imagen guardada en \(url)")
     }
@@ -46,11 +46,11 @@ class CustomFileManager {
             throw FileManagerError.invalidDirectory
         }
         
-        guard let date = sequence.captures[at: index, reversed: sequence.reversed] else {
+        guard let capture = sequence.capture(at: index) else {
             print("No se pudo obtener la captura por el indice")
             throw FileManagerError.noPhotoAtIndex
         }
-        let capturePath = sequenceDirectory.appendingPathComponent(date.imageName)
+        let capturePath = sequenceDirectory.appendingPathComponent(capture.imageName)
         
         return capturePath
     }

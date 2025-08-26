@@ -42,14 +42,12 @@ struct TimeLineView: View {
     func capturesView(for sequence: LapseSequence, count: Int, step: Int) -> some View {
         HStack(spacing: .zero) {
             ForEach(
-                Array(sequence.captures.enumerated())
-                    .filter { $0.offset % step == 0 }
-                    .prefix(count),
-                id: \.offset
-            ) { index in
+                Array(sequence.captures)
+                    .filter { $0.index % step == 0 }
+                    .prefix(count)
+            ) { capture in
                 CaptureView(
-                    sequence: sequence,
-                    index: index.offset,
+                    capture: capture,
                     scaleType: .fill
                 )
                 .frame(width: CGFloat(imageWidth), height: 40)
@@ -67,7 +65,7 @@ struct TimeLineView: View {
                 let width = max(CGFloat(duration) * pixelsPerSecond, 1)
                 let padding: CGFloat = 2
                 let count = Int(ceil(width / CGFloat(imageWidth)))
-                let step = max(1, sequence.captures.count / count)
+                let step = max(1, sequence.count / count)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     capturesView(for: sequence, count: count, step: step)
@@ -78,7 +76,7 @@ struct TimeLineView: View {
                         Text("\(Int(duration))s")
                             .font(.caption)
                         Spacer(minLength: .zero)
-                        Text("\(sequence.captures.count) frames")
+                        Text("\(sequence.count) frames")
                             .font(.caption)
                     }
                 }

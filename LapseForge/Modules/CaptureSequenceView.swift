@@ -61,12 +61,14 @@ struct CaptureSequenceView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cerrar") {
+                        recorder.stopRecording()
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Guardar") {
+                        recorder.stopRecording()
                         onSaveSequence?(recorder.sequence)
                         dismiss()
                     }
@@ -162,13 +164,5 @@ extension Recorder: AVCapturePhotoCaptureDelegate {
         } catch {
             print("❌ Error al guardar la imagen: \(error.localizedDescription)")
         }
-    }
-}
-
-extension Date {
-    var imageName: String {
-        let timestamp = Int(self.timeIntervalSince1970 * 1000)
-        let filename = "frame_\(timestamp).jpg"
-        return filename
     }
 }

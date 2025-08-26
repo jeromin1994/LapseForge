@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CaptureView: View {
-    let sequence: LapseSequence
-    let index: Int
+    let capture: LapseCapture
     var scaleType: ScaleType = .fit
     
     @State private var imageData: Data?
@@ -25,9 +24,9 @@ struct CaptureView: View {
                 Image(systemName: "photo")
             }
         }
-        .task(id: sequence.id.uuidString + "-\(index)" + "-\(sequence.rotation.rawValue)") {
+        .task(id: capture.id.uuidString + "-\(capture.index)" + "-\(capture.sequence?.rotation.rawValue ?? -1)") {
             // TODO: Esto no temina de ser eficiente cuando la imágen está rotada.
-            let data = /*await*/ sequence.captureData(at: index)
+            let data = /*await*/ capture.captureData
             await MainActor.run {
                 self.imageData = data
             }

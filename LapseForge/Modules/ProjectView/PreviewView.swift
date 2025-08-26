@@ -15,10 +15,10 @@ struct PreviewView: View {
         Color.gray
             .overlay {
                 if let scrubber,
-                   let (sequence, index) = project.sequenceAndIndex(at: scrubber) {
+                   let (sequence, index) = project.sequenceAndIndex(at: scrubber),
+                    let capture = sequence.capture(at: index) {
                     CaptureView(
-                        sequence: sequence,
-                        index: index,
+                        capture: capture,
                         scaleType: .fit
                     )
                 } else {
