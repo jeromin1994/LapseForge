@@ -160,7 +160,8 @@ extension Recorder: AVCapturePhotoCaptureDelegate {
         }
         
         do {
-            try CustomFileManager.shared.savePhoto(data, to: sequence)
+            let capture = try CustomFileManager.shared.savePhoto(data, to: sequence)
+            sequence.addCapture(capture)
         } catch {
             print("❌ Error al guardar la imagen: \(error.localizedDescription)")
         }

@@ -102,7 +102,9 @@ extension Array where Element == LapseProject {
 }
 
 @Model
-final class LapseSequence {
+final class LapseSequence: SequenceProtocol {
+    typealias CaptureType = LapseCapture
+    
     private(set) var id: UUID
     var title: String?
     @Relationship(deleteRule: .cascade)
@@ -137,22 +139,27 @@ final class LapseSequence {
         return capturesCache
     }
     
-    init(captures: [LapseCapture] = [], expectedDuration: TimeInterval = 10) {
-        self.id = UUID()
+    init(id: UUID = UUID(), captures: [LapseCapture] = [], expectedDuration: TimeInterval = 10) {
+        self.id = id
         self.internalCaptures = captures
         self.expectedDuration = expectedDuration
         
         rebuildCache()
     }
     
+    convenience init(generatedSequence: GeneratedSequence) {
+        self.init(id: generatedSequence.id)
+        
+        for generatedCapture in generatedSequence.captures {
+            let capture = LapseCapture(generatedCapture: generatedCapture)
+            self.addCapture(capture)
+        }
+    }
+    
     private func rebuildCache() {
         capturesCache = internalCaptures.sorted { $0.index < $1.index }
         capturesByIndex = Dictionary(uniqueKeysWithValues: capturesCache.map { ($0.index, $0) })
         shouldRebuildCache = false
-    }
-    
-    var directoryName: String {
-        "sequence_\(id.uuidString)/"
     }
     
     func capture(at index: Int) -> LapseCapture? {
@@ -267,17 +274,29 @@ final class LapseSequence {
 }
 
 @Model
-final class LapseCapture {
+final class LapseCapture: CaptureProtocol {
+    
     private(set) var id: UUID
     private(set) var date: Date
     @Relationship(inverse: \LapseSequence.internalCaptures)
     var sequence: LapseSequence?
     
     var index: Int
+    
+    required init() {
+        self.id = UUID()
+        self.date = Date()
+        self.index = -1
+    }
+    
     init(id: UUID = UUID(), date: Date = Date(), index: Int? = nil) {
         self.id = id
         self.date = date
         self.index = index ?? -1
+    }
+    
+    convenience init(generatedCapture: GeneratedCapture) {
+        self.init(id: generatedCapture.id)
     }
     
     var captureData: Data? {
@@ -285,10 +304,14 @@ final class LapseCapture {
     }
 }
 
-extension LapseCapture {
-    var imageName: String {
+extension Identifiable where ID == UUID {
+    var frameName: String {
         let filename = "frame_\(id.uuidString).jpg"
         return filename
+    }
+    
+    var directoryName: String {
+        "sequence_\(id.uuidString)/"
     }
 }
 

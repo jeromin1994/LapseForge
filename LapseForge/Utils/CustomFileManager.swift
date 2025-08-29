@@ -7,6 +7,14 @@
 
 import Foundation
 
+protocol SequenceProtocol: Identifiable<UUID> {
+    associatedtype CaptureType: CaptureProtocol
+}
+
+protocol CaptureProtocol: Identifiable<UUID> {
+    init()
+}
+
 class CustomFileManager {
     static let shared = CustomFileManager()
     
@@ -14,7 +22,7 @@ class CustomFileManager {
     
     private init() {}
     
-    func savePhoto(_ photo: Data, to sequence: LapseSequence) throws {
+    func savePhoto<S: SequenceProtocol>(_ photo: Data, to sequence: S) throws -> S.CaptureType {
         guard let sequenceDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
             .first?.appending(path: sequence.directoryName)
         else {
@@ -24,18 +32,16 @@ class CustomFileManager {
         
         try fileManager.createDirectory(at: sequenceDirectory, withIntermediateDirectories: true)
         
-        let capture = LapseCapture()
+        let capture = S.CaptureType()
         
-        let url = sequenceDirectory.appendingPathComponent(capture.imageName)
+        let url = sequenceDirectory.appendingPathComponent(capture.frameName)
         
         if fileManager.fileExists(atPath: url.path) {
             try fileManager.removeItem(at: url)
         }
         try photo.write(to: url)
         
-        sequence.addCapture(capture)
-        
-        print("✅ Imagen guardada en \(url)")
+        return capture
     }
     
     func getPhotoUrl(from sequence: LapseSequence, at index: Int) throws -> URL {
@@ -50,7 +56,7 @@ class CustomFileManager {
             print("No se pudo obtener la captura por el indice")
             throw FileManagerError.noPhotoAtIndex
         }
-        let capturePath = sequenceDirectory.appendingPathComponent(capture.imageName)
+        let capturePath = sequenceDirectory.appendingPathComponent(capture.frameName)
         
         return capturePath
     }
