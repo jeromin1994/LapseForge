@@ -11,38 +11,40 @@ LapseForge es una aplicación nativa en SwiftUI para crear increíbles videos ti
 
 ## Hoja de ruta (Roadmap)
 
+### Versión 1.0
 - [ ] Permitir ajustar el intervalo entre capturas de la cámara (no solo cada 1s) **[Prioridad Alta]**
 - [ ] Exportación de video final desde las secuencias creadas **[Prioridad Alta]**
-- [ ] Liberación automática de archivos y recursos cuando se elimina una secuencia o proyecto
+- [ ] Reproducción in app
 - [ ] Eliminar la dependencia privada de DeveloperKit para poder hacer el proyecto Open Source
-- [ ] Mejoras de interfaz y experiencia de usuario
 - [ ] Publicar la app en TestFlight y App Store
-- [ ] Gestión desde Apple Watch: iniciar/detener capturas remotamente
-- [ ] Soporte para edición básica de las secuencias (recortar, reordenar, cambiar duración)
-- [ ] Posibilidad de añadir música o audio a los timelapse exportados
-- [ ] Integración con iCloud para sincronización de proyectos
+
+### Versión 1.1
+- [ ] Liberación automática de archivos y recursos cuando se elimina una secuencia o proyecto
+- [ ] Mejoras de interfaz y experiencia de usuario
 - [ ] Traducción a otros idiomas (por ejemplo, inglés)
 
-### Sugerencias futuras
+### Versión 1.2
+- [ ] Gestión desde Apple Watch: iniciar/detener capturas remotamente
+- [ ] Soporte para edición básica de las secuencias (recortar, reordenar, cambiar duración)
 
+### Versión 1.4
+- [ ] Posibilidad de añadir música o audio a los timelapse exportados
+
+### Sugerencias futuras
+- Integración con iCloud para sincronización de proyectos
 - Notificaciones cuando termine una captura o exportación.
-- Soporte para atajos de Siri (automatizar capturas).
-- Previsualización de la secuencia antes de exportar.
+- Soporte para atajos de Siri (pensar cómo).
 - Guardar/exportar directamente a álbumes específicos de la galería.
-- Analítica o estadísticas de uso (opcional).
+- Analítica o estadísticas de uso.
 
 ## Instalación y enlaces
 
-Por ahora, LapseForge no está disponible en TestFlight ni en la App Store. Próximamente aquí se añadirán los enlaces de descarga y las instrucciones de instalación.
+Por ahora, LapseForge no está disponible en TestFlight ni en la App Store. Próximamente aquí se añadirán los enlaces de descarga.
 
 ## Contribuciones
 
-Cuando el proyecto sea Open Source, ¡las contribuciones serán bienvenidas! Mientras tanto, puedes dejar tus sugerencias o ideas en la sección de Issues (cuando esté disponible).
+Cuando el proyecto sea Open Source, ¡las contribuciones serán bienvenidas!
 
 ## Licencia
 
 La licencia será abierta cuando se elimine la dependencia privada y el código sea liberado.
-
----
-
-¿Tienes sugerencias o quieres colaborar? ¡No dudes en ponerte en contacto!
