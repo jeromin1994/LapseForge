@@ -66,6 +66,46 @@ class CustomFileManager {
         
         return try Data(contentsOf: capturePath)
     }
+    
+    func removeUnusedPhotos(keeping projects: [LapseProject]) throws {
+        guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            throw FileManagerError.invalidDirectory
+        }
+        
+        let allSequences = projects.flatMap { $0.sequences }
+        let usedDirectories = Set(allSequences.map { $0.directoryName })
+        
+        // --- 1. Directorios huérfanos ---
+        try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
+            .filter(\.hasDirectoryPath)
+            .filter { !usedDirectories.contains($0.lastPathComponent) }
+            .forEach { url in
+                try fileManager.removeItem(at: url)
+                print("Removed unused directory: \(url.lastPathComponent)")
+            }
+        
+        // --- 2. Capturas inválidas dentro de directorios válidos ---
+        try allSequences.forEach { sequence in
+            let sequenceDir = documentsURL.appendingPathComponent(sequence.directoryName)
+            guard fileManager.fileExists(atPath: sequenceDir.path) else { return }
+            
+            let validCaptures = Set(sequence.captures.map { $0.frameName })
+            try fileManager.contentsOfDirectory(at: sequenceDir, includingPropertiesForKeys: nil)
+                .filter { !validCaptures.contains($0.lastPathComponent) }
+                .forEach { url in
+                    try fileManager.removeItem(at: url)
+                    print("Removed unused capture: \(url.lastPathComponent) in \(sequence.directoryName)")
+                }
+        }
+        
+        // --- 3. Carpeta temporal ---
+        let tempURL = fileManager.temporaryDirectory
+        try fileManager.contentsOfDirectory(at: tempURL, includingPropertiesForKeys: nil)
+            .forEach { url in
+                try fileManager.removeItem(at: url)
+                print("Removed temp item: \(url.lastPathComponent)")
+            }
+    }
 }
 
 enum FileManagerError: Error {

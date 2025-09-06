@@ -311,7 +311,7 @@ extension Identifiable where ID == UUID {
     }
     
     var directoryName: String {
-        "sequence_\(id.uuidString)/"
+        "sequence_\(id.uuidString)"
     }
 }
 

@@ -92,7 +92,7 @@ struct ProjectsListView: View {
             }
         }
     }
-
+    
     private func deleteProjects(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
@@ -109,6 +109,10 @@ struct ProjectsListView: View {
     }
     
     private func deleteLostSequences() {
-        // TODO: Montar un metood que borre las imagenes que no estén en un sequencia de un projecto
+        do {
+            try CustomFileManager.shared.removeUnusedPhotos(keeping: projects)
+        } catch {
+            print("Error borranod secuencias perdidas: \(error)")
+        }
     }
 }
