@@ -19,7 +19,7 @@ struct ExporterButton: View {
         Button("Exportar") {
             Task {
                 do {
-                    let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("test_export.mp4")
+                    let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("export.mp4")
                     try await exporter.exportLapse(project: project, fileUrl: tempURL)
                     try await saveVideoToGallery(from: tempURL)
                     
@@ -41,6 +41,8 @@ struct ExporterButton: View {
         try await PHPhotoLibrary.shared().performChanges {
             PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
         }
+        
+        try FileManager.default.removeItem(at: url)
         
         runOnMainThread {
             exporter.status?.success = true
