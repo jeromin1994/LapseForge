@@ -12,13 +12,16 @@ import DeveloperKit
 struct ProjectsListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var projects: [LapseProject]
-
-    var body: some View {
+    
+    @ObservedObject var exporter: Exporter = .init()
+    
+    @ViewBuilder
+    var splitView: some View {
         NavigationSplitView {
             List {
                 ForEach(projects) { project in
                     NavigationLink {
-                        ProjectView(project: project)
+                        ProjectView(project: project, exporter: exporter)
                     } label: {
                         Text("\(project.title) at \(project.createdDate, format: Date.FormatStyle(date: .numeric, time: .standard))")
                     }
@@ -42,7 +45,38 @@ struct ProjectsListView: View {
             deleteLostSequences()
         })
     }
-
+    
+    var body: some View {
+        ZStack {
+            splitView
+            
+            if let status = exporter.status {
+                Spacer()
+                    .background(.background.opacity(0.5))
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text("Exportando vídeo")
+                        ProgressView(value: status.exportProgress, total: 1)
+                        Text("Unificando vídeo")
+                        ProgressView(value: status.unifyProgress, total: 1)
+                    }
+                    if status.success {
+                        Text("Video guardado en la galería")
+                        Button("Ok") {
+                            self.exporter.status = nil
+                        }
+                        .buttonStyle(.bordered)
+                    }
+                }
+                .padding(60)
+                .background(.background)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .padding(30)
+                .shadow(radius: 16)
+            }
+        }
+    }
+    
     private func addProject() {
         withAnimation {
             let newProject = LapseProject(

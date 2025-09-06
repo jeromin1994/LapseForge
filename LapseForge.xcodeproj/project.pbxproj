@@ -29,6 +29,7 @@
 		74BD69692E477FB700532A24 /* TimeIntervalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD69682E477FB700532A24 /* TimeIntervalPicker.swift */; };
 		74BD696B2E47A79200532A24 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD696A2E47A78E00532A24 /* Array+Extension.swift */; };
 		74E15BE12E6204C200E148F7 /* ImportSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE02E6204C200E148F7 /* ImportSequenceView.swift */; };
+		74E15BE32E6609BF00E148F7 /* ExporterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE22E6609BF00E148F7 /* ExporterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		74BD69682E477FB700532A24 /* TimeIntervalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalPicker.swift; sourceTree = "<group>"; };
 		74BD696A2E47A78E00532A24 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		74E15BE02E6204C200E148F7 /* ImportSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSequenceView.swift; sourceTree = "<group>"; };
+		74E15BE22E6609BF00E148F7 /* ExporterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExporterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				74BD695E2E46586800532A24 /* TimeLineView.swift */,
 				741AF8322E48C0FA009ACEFA /* ConfigurationSequenceView.swift */,
 				747CCCAA2E574A4300050494 /* PHVideoPicker.swift */,
+				74E15BE22E6609BF00E148F7 /* ExporterButton.swift */,
 			);
 			path = ProjectView;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			files = (
 				747CCCAB2E574A4300050494 /* PHVideoPicker.swift in Sources */,
 				74BD69692E477FB700532A24 /* TimeIntervalPicker.swift in Sources */,
+				74E15BE32E6609BF00E148F7 /* ExporterButton.swift in Sources */,
 				74E15BE12E6204C200E148F7 /* ImportSequenceView.swift in Sources */,
 				74BD695C2E43CFD300532A24 /* CaptureSequenceView.swift in Sources */,
 				741AF8352E490089009ACEFA /* CustomFileManager.swift in Sources */,

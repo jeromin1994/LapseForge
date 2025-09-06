@@ -22,6 +22,8 @@ struct ProjectView: View {
     
     @StateObject private var viewModel = ProjectViewModel()
     
+    @ObservedObject var exporter: Exporter
+    
     var currentSequence: LapseSequence? {
         guard let scrubber = viewModel.scrubber else {
             return nil
@@ -57,7 +59,7 @@ struct ProjectView: View {
                     }
                 }
             )
-            //
+            // Vista de configuración
             if let currentSequence {
                 ConfigurationSequenceView(
                     currentSequence: currentSequence,
@@ -73,6 +75,9 @@ struct ProjectView: View {
                 } label: {
                     Text("Guardar")
                 }
+            }
+            ToolbarItem {
+                ExporterButton(exporter: exporter, project: project)
             }
         })
         .sheet(
@@ -139,6 +144,6 @@ struct ProjectView: View {
 
 #Preview {
     NavigationStack {
-        ProjectView(project: .mock)
+        ProjectView(project: .mock, exporter: .init())
     }
 }
