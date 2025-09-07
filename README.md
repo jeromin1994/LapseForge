@@ -4,7 +4,7 @@ LapseForge es una aplicación nativa en SwiftUI para crear increíbles videos ti
 
 ## Características principales
 
-- **Captura desde cámara**: Toma imágenes periódicamente para generar tus timelapse. Actualmente la captura es cada 1 segundo, pero se podrá configurar próximamente.
+- **Captura desde cámara**: Toma imágenes periódicamente para generar tus timelapse, eligiendo cada cuanto quieres tomarlas.
 - **Importación de videos**: Convierte videos de la galería en secuencias dentro de tu proyecto.
 - **Gestión de secuencias**: Un mismo video puede tener varias secuencias, asignándoles la duración deseada.
 - **Interfaz nativa**: 100% SwiftUI.
@@ -13,15 +13,15 @@ LapseForge es una aplicación nativa en SwiftUI para crear increíbles videos ti
 
 ### Versión 1.0
 - [X] Permitir ajustar el intervalo entre capturas de la cámara (no solo cada 1s) **[Prioridad Alta]**
-- [ ] Exportación de video final desde las secuencias creadas **[Prioridad Alta]**
+- [X] Exportación de video final desde las secuencias creadas **[Prioridad Alta]**
 - [ ] Reproducción in app
 - [ ] Eliminar la dependencia privada de DeveloperKit para poder hacer el proyecto Open Source
 - [ ] Crear los workflow de Xcode Cloud
 - [ ] Icono
-- [ ] Publicar la app en TestFlight y App Store
+- [ ] Publicar la app en App Store
 
 ### Versión 1.1
-- [ ] Liberación automática de archivos y recursos cuando se elimina una secuencia o proyecto
+- [X] Liberación automática de archivos y recursos cuando se elimina una secuencia o proyecto
 - [ ] Mejoras de interfaz y experiencia de usuario
 - [ ] Traducción a otros idiomas (por ejemplo, inglés)
 
