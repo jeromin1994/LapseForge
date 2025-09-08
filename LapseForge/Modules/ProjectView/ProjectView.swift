@@ -43,21 +43,9 @@ struct ProjectView: View {
             // Línea de tiempo avanzada
             TimeLineView(
                 project: project,
-                updateSelectedSequence: { [weak viewModel] selectedSequence in
-                    runOnMainThread {
-                        viewModel?.selectedSequence = selectedSequence
-                    }
-                },
-                updateScrubber: { [weak viewModel] newScrubber in
-                    runOnMainThread {
-                        viewModel?.scrubber = newScrubber
-                    }
-                },
-                showPhotoPicker: { [weak viewModel] in
-                    runOnMainThread {
-                        viewModel?.showPhotoPicker = true
-                    }
-                }
+                scrubber: $viewModel.scrubber,
+                selectedSequence: $viewModel.selectedSequence,
+                showPhotoPicker: $viewModel.showPhotoPicker
             )
             // Vista de configuración
             if let currentSequence {

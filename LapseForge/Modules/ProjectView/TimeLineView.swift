@@ -11,10 +11,11 @@ import DeveloperKit // TODO: Para las alertas. Cuando hagamos publico el repo, h
 struct TimeLineView: View {
     @State private var scrollContentHeight: CGFloat = 0
     @State private var alertModel: AlertModel?
+    @State private var position = ScrollPosition(edge: .top)
     let project: LapseProject
-    var updateSelectedSequence: (LapseSequence) -> Void
-    var updateScrubber: (TimeInterval) -> Void
-    var showPhotoPicker: () -> Void
+    @Binding var scrubber: TimeInterval?
+    @Binding var selectedSequence: LapseSequence?
+    @Binding var showPhotoPicker: Bool
     
     let scrollCoordinateSpace: NamedCoordinateSpace = .named("Scroll")
     let imageWidth = 20
@@ -57,40 +58,12 @@ struct TimeLineView: View {
     
     @ViewBuilder
     var sequencesViews: some View {
-        let horizontalInset: CGFloat = UIScreen.main.bounds.width/2
-        HStack(alignment: .top, spacing: 0) {
-            Spacer().frame(width: horizontalInset, height: 10)
-            ForEach(project.sequences) { sequence in
-                let duration = sequence.expectedDuration
-                let width = max(CGFloat(duration) * pixelsPerSecond, 1)
-                let padding: CGFloat = 2
-                let count = Int(ceil(width / CGFloat(imageWidth)))
-                let step = max(1, sequence.count / count)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    capturesView(for: sequence, count: count, step: step)
-                        .frame(width: max(width - padding, .zero), alignment: .leading)
-                        .clipped()
-                    
-                    HStack {
-                        Text("\(Int(duration))s")
-                            .font(.caption)
-                        Spacer(minLength: .zero)
-                        Text("\(sequence.count) frames")
-                            .font(.caption)
-                    }
-                }
-                .frame(width: max(width - padding, .zero))
-                .background(Color.secondary)
-                .cornerRadius(4)
-                .onTapGesture {
-                    updateSelectedSequence(sequence)
-                }
-                
-                Spacer().frame(width: padding)
-            }
-            Spacer().frame(width: horizontalInset, height: 10)
-        }
+        SequencesView(
+            project: project,
+            selectedSequence: $selectedSequence,
+            pixelsPerSecond: pixelsPerSecond,
+            imageWidth: imageWidth
+        )
     }
     
     @ViewBuilder
@@ -128,13 +101,15 @@ struct TimeLineView: View {
                 let cameraButton = AlertButton(
                     title: "Cámara",
                     action: {
-                        updateSelectedSequence(.init())
+                        selectedSequence = .init()
                     }
                 )
                 
                 let galeryButton = AlertButton(
                     title: "Galería",
-                    action: showPhotoPicker
+                    action: {
+                        showPhotoPicker = true
+                    }
                 )
                 alertModel = .init(
                     title: "Nueva sequencia",
@@ -179,6 +154,7 @@ struct TimeLineView: View {
                 backgroundReader
             }
         }
+        .scrollPosition($position)
         .coordinateSpace(scrollCoordinateSpace)
         .overlay {
             scrubberLine
@@ -187,10 +163,69 @@ struct TimeLineView: View {
             addSequenceButton
         }
         .alert(model: $alertModel)
+        .onChange(of: scrubber ?? .zero) { _, newValue in
+            position.scrollTo(x: newValue * pixelsPerSecond)
+        }
     }
     
     private func updateSelectedSecond(withOffset offset: CGFloat) {
         let newScrubber = max(min(-offset / pixelsPerSecond, project.totalDuration), .zero)
-        updateScrubber(newScrubber)
+        self.scrubber = newScrubber
+    }
+}
+
+struct SequencesView: View {
+    let project: LapseProject
+    @Binding var selectedSequence: LapseSequence?
+    let pixelsPerSecond: CGFloat
+    let imageWidth: Int
+    
+    var body: some View {
+        let horizontalInset: CGFloat = UIScreen.main.bounds.width/2
+        HStack(alignment: .top, spacing: 0) {
+            Spacer().frame(width: horizontalInset, height: 10)
+            ForEach(project.sequences) { sequence in
+                let duration = sequence.expectedDuration
+                let width = max(CGFloat(duration) * pixelsPerSecond, 1)
+                let padding: CGFloat = 2
+                let count = Int(ceil(width / CGFloat(imageWidth)))
+                let step = max(1, sequence.count / count)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: .zero) {
+                        ForEach(
+                            Array(sequence.captures)
+                                .filter { $0.index % step == 0 }
+                                .prefix(count)
+                        ) { capture in
+                            CaptureView(
+                                capture: capture,
+                                scaleType: .fill
+                            )
+                            .frame(width: CGFloat(imageWidth), height: 40)
+                        }
+                    }
+                    .frame(width: max(width - padding, .zero), alignment: .leading)
+                    .clipped()
+                    
+                    HStack {
+                        Text("\(Int(duration))s")
+                            .font(.caption)
+                        Spacer(minLength: .zero)
+                        Text("\(sequence.count) frames")
+                            .font(.caption)
+                    }
+                }
+                .frame(width: max(width - padding, .zero))
+                .background(Color.secondary)
+                .cornerRadius(4)
+                .onTapGesture {
+                    selectedSequence = sequence
+                }
+                
+                Spacer().frame(width: padding)
+            }
+            Spacer().frame(width: horizontalInset, height: 10)
+        }
     }
 }
