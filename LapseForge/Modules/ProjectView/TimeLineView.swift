@@ -158,6 +158,12 @@ struct TimeLineView: View {
             .ultraThinMaterial
         )
         .clipShape(.circle)
+        .shadow(
+            color: .black.opacity(0.8),
+            radius: 2,
+            x: 1,
+            y: 1
+        )
     }
     
     var body: some View {
