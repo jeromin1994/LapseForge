@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import DeveloperKit // TODO: Para las alertas. Cuando hagamos publico el repo, habrá que quitar DeveloperKit y por tanto mover esas implementaciones a este proyecto.
 
 struct TimeLineView: View {
     @State private var scrollContentHeight: CGFloat = 0

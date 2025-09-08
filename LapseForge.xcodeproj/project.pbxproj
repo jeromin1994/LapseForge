@@ -11,7 +11,6 @@
 		741AF8352E490089009ACEFA /* CustomFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8342E490082009ACEFA /* CustomFileManager.swift */; };
 		741AF8382E4B49B4009ACEFA /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8372E4B49B4009ACEFA /* CaptureView.swift */; };
 		741AF83A2E4B4B5D009ACEFA /* SequenceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741AF8392E4B4B5D009ACEFA /* SequenceCatalog.swift */; };
-		7448D62C2E3FCF5600D0CB5C /* DeveloperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7448D62B2E3FCF5600D0CB5C /* DeveloperKit */; };
 		7448D6332E3FD14500D0CB5C /* ci_post_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6312E3FD14500D0CB5C /* ci_post_xcodebuild.sh */; };
 		7448D6342E3FD14500D0CB5C /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 7448D6302E3FD14500D0CB5C /* ci_post_clone.sh */; };
 		7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448D6392E3FD15600D0CB5C /* LapseForgeApp.swift */; };
@@ -30,6 +29,8 @@
 		74BD696B2E47A79200532A24 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD696A2E47A78E00532A24 /* Array+Extension.swift */; };
 		74E15BE12E6204C200E148F7 /* ImportSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE02E6204C200E148F7 /* ImportSequenceView.swift */; };
 		74E15BE32E6609BF00E148F7 /* ExporterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE22E6609BF00E148F7 /* ExporterButton.swift */; };
+		74E15BE52E6EE0A900E148F7 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE42E6EE0A900E148F7 /* CustomAlert.swift */; };
+		74E15BE72E6EE11200E148F7 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE62E6EE10D00E148F7 /* Optional+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		74BD696A2E47A78E00532A24 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		74E15BE02E6204C200E148F7 /* ImportSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSequenceView.swift; sourceTree = "<group>"; };
 		74E15BE22E6609BF00E148F7 /* ExporterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExporterButton.swift; sourceTree = "<group>"; };
+		74E15BE42E6EE0A900E148F7 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		74E15BE62E6EE10D00E148F7 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7448D62C2E3FCF5600D0CB5C /* DeveloperKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				74BD696A2E47A78E00532A24 /* Array+Extension.swift */,
+				74E15BE62E6EE10D00E148F7 /* Optional+Extension.swift */,
 				74BD69612E46588700532A24 /* TimeInterval+Extension.swift */,
 			);
 			path = Extension;
@@ -168,6 +171,7 @@
 		74BD69652E477F8C00532A24 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				74E15BE42E6EE0A900E148F7 /* CustomAlert.swift */,
 				74BD69682E477FB700532A24 /* TimeIntervalPicker.swift */,
 				74BD69662E477F9D00532A24 /* IntPicker.swift */,
 				741AF8372E4B49B4009ACEFA /* CaptureView.swift */,
@@ -193,7 +197,6 @@
 			);
 			name = LapseForge;
 			packageProductDependencies = (
-				7448D62B2E3FCF5600D0CB5C /* DeveloperKit */,
 			);
 			productName = LapseForge;
 			productReference = 7448D6102E3FCBC100D0CB5C /* LapseForge.app */;
@@ -224,7 +227,6 @@
 			mainGroup = 7448D6072E3FCBC100D0CB5C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				7448D62A2E3FCF5600D0CB5C /* XCRemoteSwiftPackageReference "DeveloperKit" */,
 				7448D62D2E3FCF7000D0CB5C /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -259,6 +261,7 @@
 				74BD69692E477FB700532A24 /* TimeIntervalPicker.swift in Sources */,
 				74E15BE32E6609BF00E148F7 /* ExporterButton.swift in Sources */,
 				74E15BE12E6204C200E148F7 /* ImportSequenceView.swift in Sources */,
+				74E15BE72E6EE11200E148F7 /* Optional+Extension.swift in Sources */,
 				74BD695C2E43CFD300532A24 /* CaptureSequenceView.swift in Sources */,
 				741AF8352E490089009ACEFA /* CustomFileManager.swift in Sources */,
 				7448D63D2E3FD15600D0CB5C /* LapseForgeApp.swift in Sources */,
@@ -274,6 +277,7 @@
 				7448D6612E41184C00D0CB5C /* LapseProject.swift in Sources */,
 				74BD695F2E46586800532A24 /* TimeLineView.swift in Sources */,
 				741AF8382E4B49B4009ACEFA /* CaptureView.swift in Sources */,
+				74E15BE52E6EE0A900E148F7 /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,14 +525,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7448D62A2E3FCF5600D0CB5C /* XCRemoteSwiftPackageReference "DeveloperKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jeronimocabezuelo/DeveloperKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		7448D62D2E3FCF7000D0CB5C /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
@@ -540,11 +536,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7448D62B2E3FCF5600D0CB5C /* DeveloperKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7448D62A2E3FCF5600D0CB5C /* XCRemoteSwiftPackageReference "DeveloperKit" */;
-			productName = DeveloperKit;
-		};
 		7448D62E2E3FD07700D0CB5C /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7448D62D2E3FCF7000D0CB5C /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;

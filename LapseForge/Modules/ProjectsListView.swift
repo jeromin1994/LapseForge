@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import DeveloperKit
 
 struct ProjectsListView: View {
     @Environment(\.modelContext) private var modelContext
@@ -96,7 +95,7 @@ struct ProjectsListView: View {
     private func deleteProjects(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                guard let project = projects.at(index) else { continue }
+                guard let project = projects[at: index] else { continue }
                 modelContext.delete(project)
             }
             
