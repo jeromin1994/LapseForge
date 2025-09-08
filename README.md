@@ -15,7 +15,7 @@ LapseForge es una aplicación nativa en SwiftUI para crear increíbles videos ti
 - [X] Permitir ajustar el intervalo entre capturas de la cámara (no solo cada 1s) **[Prioridad Alta]**
 - [X] Exportación de video final desde las secuencias creadas **[Prioridad Alta]**
 - [X] Reproducción in app
-- [ ] Eliminar la dependencia privada de DeveloperKit para poder hacer el proyecto Open Source
+- [X] Eliminar la dependencia privada de DeveloperKit para poder hacer el proyecto Open Source
 - [ ] Crear los workflow de Xcode Cloud
 - [ ] Icono
 - [ ] Publicar la app en App Store
