@@ -31,6 +31,7 @@
 		74E15BE32E6609BF00E148F7 /* ExporterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE22E6609BF00E148F7 /* ExporterButton.swift */; };
 		74E15BE52E6EE0A900E148F7 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE42E6EE0A900E148F7 /* CustomAlert.swift */; };
 		74E15BE72E6EE11200E148F7 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E15BE62E6EE10D00E148F7 /* Optional+Extension.swift */; };
+		74F377D92E7333BC00AB1A72 /* icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 74F377D82E7333BC00AB1A72 /* icon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		74E15BE22E6609BF00E148F7 /* ExporterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExporterButton.swift; sourceTree = "<group>"; };
 		74E15BE42E6EE0A900E148F7 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		74E15BE62E6EE10D00E148F7 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
+		74F377D82E7333BC00AB1A72 /* icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = icon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				7448D6552E3FD3B200D0CB5C /* Models */,
 				7448D6562E3FD3BD00D0CB5C /* Modules */,
 				7448D6352E3FD15600D0CB5C /* Assets.xcassets */,
+				74F377D82E7333BC00AB1A72 /* icon.icon */,
 				7448D6382E3FD15600D0CB5C /* LapseForge.entitlements */,
 				7448D6392E3FD15600D0CB5C /* LapseForgeApp.swift */,
 			);
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7448D6332E3FD14500D0CB5C /* ci_post_xcodebuild.sh in Resources */,
+				74F377D92E7333BC00AB1A72 /* icon.icon in Resources */,
 				7448D63E2E3FD15600D0CB5C /* Assets.xcassets in Resources */,
 				7448D6342E3FD14500D0CB5C /* ci_post_clone.sh in Resources */,
 			);
@@ -410,7 +414,7 @@
 		7448D61F2E3FCBC200D0CB5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LapseForge/LapseForge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -457,7 +461,7 @@
 		7448D6202E3FCBC200D0CB5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LapseForge/LapseForge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
