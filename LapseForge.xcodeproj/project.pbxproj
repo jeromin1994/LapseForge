@@ -424,6 +424,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LapseForge/Info.plist;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Uso de camara para captura de imágenes";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Necesitamos acceder a tu galería para importar vídeos y crear tus secuencias de time-lapse.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -471,6 +472,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LapseForge/Info.plist;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Uso de camara para captura de imágenes";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Necesitamos acceder a tu galería para importar vídeos y crear tus secuencias de time-lapse.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
