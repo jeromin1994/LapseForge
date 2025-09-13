@@ -1,5 +1,5 @@
 //
-//  SequenceCatalog.swift
+//  SequenceCatalogView.swift
 //  LapseForge
 //
 //  Created by Jerónimo Cabezuelo Ruiz on 12/8/25.
@@ -16,7 +16,7 @@ private struct SequenceCatalogCaptureModel {
     }
 }
 
-struct SequenceCatalog: View {
+struct SequenceCatalogView: View {
     let sequence: LapseSequence
     var onSaveSequence: () -> Void
     
@@ -71,16 +71,16 @@ struct SequenceCatalog: View {
     @ViewBuilder
     var selectionView: some View {
         HStack {
-            Text("\(selectedCaptures) frames selecionados")
+            Text(.SequenceCatalog.selectedCaptures(selectedCaptures) )
             Spacer()
             if selectedCaptures == captures.count {
-                Button("Deselecionar todos") {
+                Button(.SequenceCatalog.unselectAll) {
                     captures.indices.forEach {
                         captures[at: $0]?.selected = false
                     }
                 }
             } else {
-                Button("Selecionar todos") {
+                Button(.SequenceCatalog.selectAll) {
                     captures.indices.forEach {
                         captures[at: $0]?.selected = true
                     }
@@ -91,7 +91,7 @@ struct SequenceCatalog: View {
     
     @ViewBuilder
     var deleteButton: some View {
-        Button("Borrar Frames", role: .destructive) {
+        Button(.SequenceCatalog.deleteFrames, role: .destructive) {
             withAnimation {
                 for capture in captures where capture.selected {
                     sequence.removeCapture(capture.capture)
@@ -104,7 +104,7 @@ struct SequenceCatalog: View {
     
     @ViewBuilder
     var exportButton: some View {
-        Button("Exportar Frames", role: .cancel) {
+        Button(.SequenceCatalog.exportFrames, role: .cancel) {
             // TODO: Implementar esta funcionalidad.
         }
         .buttonStyle(.borderedProminent)
@@ -135,17 +135,17 @@ struct SequenceCatalog: View {
                 buttonsView
             }
             .padding()
-            .navigationTitle("Catálogo de Frames")
+            .navigationTitle(.Project.frameCatalog)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") {
+                    Button(.Common.close) {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Guardar") {
+                    Button(.Common.save) {
                         onSaveSequence()
                         dismiss()
                     }
@@ -163,5 +163,5 @@ struct SequenceCatalog: View {
 }
 
 #Preview {
-    SequenceCatalog(sequence: .mock, onSaveSequence: {})
+    SequenceCatalogView(sequence: .mock, onSaveSequence: {})
 }

@@ -208,10 +208,10 @@ struct SequencesView: View {
                     .clipped()
                     
                     HStack {
-                        Text("\(Int(duration))s")
+                        Text(.Project.seconds(Int(duration)))
                             .font(.caption)
                         Spacer(minLength: .zero)
-                        Text("\(sequence.count) frames")
+                        Text(.Project.frames(sequence.count))
                             .font(.caption)
                     }
                 }

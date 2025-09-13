@@ -61,7 +61,7 @@ struct ProjectView: View {
                 Button {
                     saveProject()
                 } label: {
-                    Text("Guardar")
+                    Text(.Common.save)
                 }
             }
             ToolbarItem {
@@ -80,7 +80,7 @@ struct ProjectView: View {
         .sheet(
             item: $viewModel.catalogSequence,
             content: { sequence in
-                SequenceCatalog(
+                SequenceCatalogView(
                     sequence: sequence,
                     onSaveSequence: saveProject
                 )

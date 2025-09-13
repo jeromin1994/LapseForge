@@ -107,14 +107,14 @@ struct CaptureSequenceView: View {
                 CameraPreview(session: $session.session)
                     .frame(height: 400)
                     .overlay {
-                        Text("\(updater)")
+                        Text(updater.description)
                             .foregroundStyle(.clear)
                     }
                 VStack {
                     HStack {
-                        Picker("Cámara", selection: $selectedCamera) {
-                            Text("Trasera").tag(AVCaptureDevice.Position.back)
-                            Text("Frontal").tag(AVCaptureDevice.Position.front)
+                        Picker(String(localized: .CaptureSequence.camera), selection: $selectedCamera) {
+                            Text(.CaptureSequence.back).tag(AVCaptureDevice.Position.back)
+                            Text(.CaptureSequence.front).tag(AVCaptureDevice.Position.front)
                         }
                         .pickerStyle(.segmented)
                         .onChange(of: selectedCamera) { _, newCamera in
@@ -124,7 +124,12 @@ struct CaptureSequenceView: View {
                     HStack {
                         VStack {
                             Slider(value: $interval, in: unit.range, step: unit.step)
-                            Text("Intervalo: \(Int(interval)) \(unit.formatted)")
+                            Text(
+                                .CaptureSequence.interval(
+                                    Int(interval),
+                                    unit.formatted
+                                )
+                            )
                         }
                         Picker("", selection: $unit) {
                             ForEach(TimeUnit.allCases) { u in
@@ -165,28 +170,28 @@ struct CaptureSequenceView: View {
                         .foregroundColor(isRecording ? .red : .green)
                 })
                 
-                Text("Capturas: \(session.sequence.count)")
-                Text("Tiempo transcurrido: \(formatElapsedTime(recordingDuration))")
-                Text("Próxima captura en: \(String(format: "%.1f", nextCaptureCountdown))s")
+                Text(.CaptureSequence.captures(session.sequence.count))
+                Text(.CaptureSequence.elapsedTime(formatElapsedTime(recordingDuration)))
+                Text(.CaptureSequence.nextCapture(String(format: "%.1f", nextCaptureCountdown)))
                 
                 if isRecording {
-                    Text("Recording...")
+                    Text(.CaptureSequence.recording)
                         .foregroundColor(.red)
                 }
                 
                 Spacer()
             }
-            .navigationTitle("Nueva grabación")
+            .navigationTitle(.CaptureSequence.new)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") {
+                    Button(.Common.close) {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Guardar") {
+                    Button(.Common.save) {
                         onSaveSequence?(session.sequence)
                         dismiss()
                     }

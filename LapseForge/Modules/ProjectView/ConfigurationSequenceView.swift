@@ -14,7 +14,7 @@ struct ConfigurationSequenceView: View {
     var nameAndDate: some View {
         HStack {
             TextField(
-                "Secuencia sín nombre",
+                String(localized: .Project.unnamedSequence),
                 text: Binding(
                     get: { currentSequence.title ?? "" },
                     set: { newValue in
@@ -32,7 +32,7 @@ struct ConfigurationSequenceView: View {
     @ViewBuilder
     var durationView: some View {
         VStack {
-            Text("Duración secuencia ")
+            Text(.Project.sequenceDuration)
             TimeIntervalPicker(
                 timeInterval: .init(
                     get: {
@@ -54,7 +54,7 @@ struct ConfigurationSequenceView: View {
                 currentSequence.reversed.toggle()
             },
             systemImageName: "clock.arrow.circlepath",
-            title: currentSequence.reversed ? "En reversa" : "Normal"
+            title: currentSequence.reversed ? .Project.reversed : .Project.normal
         )
     }
     
@@ -76,7 +76,7 @@ struct ConfigurationSequenceView: View {
                 catalogSequence = currentSequence
             },
             systemImageName: "photo.stack",
-            title: "Catálogo de Frames"
+            title: .Project.frameCatalog
         )
     }
     
@@ -99,7 +99,7 @@ struct ConfigurationSequenceView: View {
 private struct CustomButton: View {
     var action: () -> Void
     var systemImageName: String
-    var title: String
+    var title: LocalizedStringResource
     
     var body: some View {
         Button(action: action) {

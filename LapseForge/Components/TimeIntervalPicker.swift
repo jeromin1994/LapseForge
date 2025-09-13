@@ -57,12 +57,12 @@ struct TimeIntervalPicker: View {
     
     var body: some View {
         HStack(alignment: .intPickerAlignment) {
-            IntPicker(title: "Minutos", range: minutesRange, selection: safeMinutes)
-            Text(":")
+            IntPicker(title: .Common.minutes, range: minutesRange, selection: safeMinutes)
+            Text(.Common.colon)
                 .alignmentGuide(.intPickerAlignment) { d in
                     d[VerticalAlignment.center]
                 }
-            IntPicker(title: "Segundos", range: secondsRange, selection: safeSeconds)
+            IntPicker(title: .Common.seconds, range: secondsRange, selection: safeSeconds)
         }
     }
 }

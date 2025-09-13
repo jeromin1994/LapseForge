@@ -1,0 +1,94 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "countFrames" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El vídeo tiene %lld frames"
+          }
+        }
+      }
+    },
+    "estimatedTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo estimado a 60fps: %@"
+          }
+        }
+      }
+    },
+    "generateSequence" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generar sequencia"
+          }
+        }
+      }
+    },
+    "generatingSequence" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generando secuencia"
+          }
+        }
+      }
+    },
+    "onlyOneFrame" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sólo hay 1 frame disponible"
+          }
+        }
+      }
+    },
+    "recount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld de %2$lld"
+          }
+        }
+      }
+    },
+    "remainingTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo restante %1$@"
+          }
+        }
+      }
+    },
+    "selectionDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona cuantos frames quieres extraer. Más imagenes resultan en un video más suave, pero tardará más en generar."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

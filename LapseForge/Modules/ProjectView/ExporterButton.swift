@@ -16,7 +16,7 @@ struct ExporterButton: View {
     var project: LapseProject
     
     var body: some View {
-        Button("Exportar") {
+        Button(.Project.exportButtonTitle) {
             Task {
                 do {
                     let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("export.mp4")

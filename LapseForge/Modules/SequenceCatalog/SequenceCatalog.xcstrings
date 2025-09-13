@@ -1,0 +1,61 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "deleteFrames" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar frames"
+          }
+        }
+      }
+    },
+    "exportFrames" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar Frames"
+          }
+        }
+      }
+    },
+    "selectAll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar todos"
+          }
+        }
+      }
+    },
+    "selectedCaptures" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld frames seleccionados"
+          }
+        }
+      }
+    },
+    "unselectAll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deseleccionar todos"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}
