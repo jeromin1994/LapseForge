@@ -10,7 +10,7 @@ LapseForge es una aplicación nativa en SwiftUI para crear increíbles videos ti
 - **Interfaz nativa**: 100% SwiftUI.
 
 ## Instalación y enlaces
-LapseForge está disponible en [TestFlight](https://testflight.apple.com/join/d1d4GbyH "TestFlight").
+LapseForge está disponible en su versión Beta en [TestFlight](https://testflight.apple.com/join/d1d4GbyH "TestFlight").
 
 Por ahora, LapseForge no está disponible en la App Store. Próximamente aquí se añadirán el enlace de la store.
 
@@ -47,7 +47,12 @@ Por ahora, LapseForge no está disponible en la App Store. Próximamente aquí s
 ## Contribuciones
 Este es un proyecto abierto y colaborativo.  
 Cualquier persona puede proponer mejoras o nuevas funcionalidades mediante un **Pull Request**.  
-Cada PR aprobado generará automáticamente una nueva versión disponible en **TestFlight** para pruebas.
+
+#### **Nota sobre builds y pruebas:**
+- Debido a las limitaciones de Xcode Cloud, cuando se crea o modifica un pull request se generará automáticamente una **build interna**. Esta build deberá ser aprobada antes de generar la **build externa** disponible en [TestFlight](https://testflight.apple.com/join/d1d4GbyH) para testers externos.  
+- Si quieres recibir las builds internas directamente para pruebas, ponte en contacto con el mantenedor del proyecto para ser incluido en la lista de **testers internos**.  
+
+Cada PR aprobado generará automáticamente una nueva versión disponible en **TestFlight** para pruebas externas, una vez que la build interna haya sido aprobada.
 
 ## Licencia
 Este proyecto se distribuye bajo la licencia **MIT**.  
