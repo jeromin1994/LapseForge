@@ -69,20 +69,20 @@ struct ImportSequenceView: View {
         ZStack {
             NavigationStack {
                 VStack {
-                    Text("El vídeo tiene \(totalFrames) frames")
-                    Text("Selecciona cuantos frames quieres extraer. Más imagenes resultan en un video más suave, pero tardará más en generar.")
+                    Text(.ImportSequence.countFrames(totalFrames))
+                    Text(.ImportSequence.selectionDescription)
                     if totalFrames <= 1 {
-                        Text("Sólo hay 1 frame disponible")
+                        Text(.ImportSequence.onlyOneFrame)
                     } else {
-                        Text("\(Int(framesToExtract)) de \(totalFrames)")
+                        Text(.ImportSequence.recount(Int(framesToExtract), totalFrames))
                         Slider(
                             value: $framesToExtract,
                             in: 1...Double(totalFrames),
                             step: 1
                         )
-                        Text("Tiempo estimado a 60fps: \(estimatedDuration)")
+                        Text(.ImportSequence.estimatedTime(estimatedDuration))
                     }
-                    Button("Generar sequencia") {
+                    Button(.ImportSequence.generateSequence) {
                         Task {
                             guard let generatedSequence = await generateSequence() else {
                                 dismiss() // Se podría también mostrar un error
@@ -105,10 +105,10 @@ struct ImportSequenceView: View {
                 Spacer()
                     .background(.background.opacity(0.5))
                 VStack(alignment: .leading) {
-                    Text("Generando secuencia")
+                    Text(.ImportSequence.generatingSequence)
                     ProgressView(value: Double(extractedFrames), total: framesToExtract)
-                    Text("\(extractedFrames) de \(Int(framesToExtract))")
-                    Text("Tiempo restante: \(remainingTime)")
+                    Text(.ImportSequence.recount(extractedFrames, Int(framesToExtract)))
+                    Text(.ImportSequence.remainingTime(remainingTime))
                 }
                 .padding(60)
                 .background(.background)

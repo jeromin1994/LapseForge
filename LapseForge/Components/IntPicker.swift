@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IntPicker: View {
-    var title: String?
+    var title: LocalizedStringResource?
     
     var range: Range<Int> = 0..<60
     @Binding var selection: Int
@@ -17,7 +17,7 @@ struct IntPicker: View {
         VStack {
             Picker("", selection: $selection) {
                 ForEach(range, id: \.self) { int in
-                    Text("\(int)")
+                    Text(int.description)
                 }
             }
             .pickerStyle(.wheel)

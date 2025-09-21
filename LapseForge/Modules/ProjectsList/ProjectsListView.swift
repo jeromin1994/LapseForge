@@ -22,7 +22,7 @@ struct ProjectsListView: View {
                     NavigationLink {
                         ProjectView(project: project, exporter: exporter)
                     } label: {
-                        Text("\(project.title) at \(project.createdDate, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        Text(.ProjectsList.itemTitle(project.title, project.createdDate.formatted(Date.FormatStyle(date: .numeric, time: .standard))))
                     }
                 }
                 .onDelete(perform: deleteProjects)
@@ -33,12 +33,12 @@ struct ProjectsListView: View {
                 }
                 ToolbarItem {
                     Button(action: addProject) {
-                        Label("New Project", systemImage: "plus")
+                        Label(.ProjectsList.new, systemImage: "plus")
                     }
                 }
             }
         } detail: {
-            Text("Select an Project")
+            Text(.ProjectsList.select)
         }
         .onAppear(perform: {
             deleteLostSequences()
@@ -54,14 +54,14 @@ struct ProjectsListView: View {
                     .background(.background.opacity(0.5))
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("Exportando vídeo")
+                        Text(.ProjectsList.exporting)
                         ProgressView(value: status.exportProgress, total: 1)
-                        Text("Unificando vídeo")
+                        Text(.ProjectsList.unifying)
                         ProgressView(value: status.unifyProgress, total: 1)
                     }
                     if status.success {
-                        Text("Video guardado en la galería")
-                        Button("Ok") {
+                        Text(.ProjectsList.videoSaved)
+                        Button(.Common.ok) {
                             self.exporter.status = nil
                         }
                         .buttonStyle(.bordered)

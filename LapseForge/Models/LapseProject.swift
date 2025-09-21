@@ -261,12 +261,12 @@ final class LapseSequence: SequenceProtocol {
             }
         }
         
-        var title: String {
+        var title: LSR {
             switch self {
-            case .none: "No rotación"
-            case .clockwise90: "Rotado 90º"
-            case .clockwise180: "Rotado 180º"
-            case .counterClockwise90: "Rotado 270º"
+            case .none: .Project.noRotation
+            case .clockwise90: .Project.halfPiRotation
+            case .clockwise180: .Project.piRotation
+            case .counterClockwise90: .Project.piAndHalfRotation
             }
         }
     }
