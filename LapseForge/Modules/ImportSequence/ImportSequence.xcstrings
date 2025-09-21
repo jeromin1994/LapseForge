@@ -4,6 +4,12 @@
     "countFrames" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The video has %lld frames"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15,6 +21,12 @@
     "estimatedTime" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated time at 60fps: %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26,6 +38,12 @@
     "generateSequence" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generate sequence"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37,6 +55,12 @@
     "generatingSequence" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generating sequence"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48,6 +72,12 @@
     "onlyOneFrame" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only 1 frame available"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -59,6 +89,12 @@
     "recount" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %2$lld"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70,6 +106,12 @@
     "remainingTime" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remaining time %1$@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -81,6 +123,12 @@
     "selectionDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select how many frames you want to extract. More images result in a smoother video, but it will take longer to generate."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",

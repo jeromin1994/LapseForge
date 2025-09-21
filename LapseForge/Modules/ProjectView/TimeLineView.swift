@@ -98,21 +98,21 @@ struct TimeLineView: View {
         Button(
             action: {
                 let cameraButton = AlertButton(
-                    title: "Cámara",
+                    title: .Project.camera,
                     action: {
                         selectedSequence = .init()
                     }
                 )
                 
                 let galeryButton = AlertButton(
-                    title: "Galería",
+                    title: .Project.galery,
                     action: {
                         showPhotoPicker = true
                     }
                 )
                 alertModel = .init(
-                    title: "Nueva sequencia",
-                    message: "¿Cómo la quieres crear?",
+                    title: .Project.newSequenceAlertTitle,
+                    message: .Project.newSequenceAlertMessage,
                     buttons: [
                         cameraButton,
                         galeryButton,

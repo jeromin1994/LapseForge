@@ -36,7 +36,7 @@
 		74F377E52E75C9BD00AB1A72 /* CaptureSequence.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 74F377E42E75C9BD00AB1A72 /* CaptureSequence.xcstrings */; };
 		74F377E72E75CC5A00AB1A72 /* Project.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 74F377E62E75CC5A00AB1A72 /* Project.xcstrings */; };
 		74F377EA2E75CEBA00AB1A72 /* ImportSequence.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 74F377E92E75CEBA00AB1A72 /* ImportSequence.xcstrings */; };
-		74F377ED2E75D12400AB1A72 /* ProjectList.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 74F377EC2E75D12400AB1A72 /* ProjectList.xcstrings */; };
+		74F377ED2E75D12400AB1A72 /* ProjectsList.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 74F377EC2E75D12400AB1A72 /* ProjectsList.xcstrings */; };
 		74F377F02E75D25500AB1A72 /* SequenceCatalog.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 74F377EF2E75D25500AB1A72 /* SequenceCatalog.xcstrings */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +73,7 @@
 		74F377E42E75C9BD00AB1A72 /* CaptureSequence.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = CaptureSequence.xcstrings; sourceTree = "<group>"; };
 		74F377E62E75CC5A00AB1A72 /* Project.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Project.xcstrings; sourceTree = "<group>"; };
 		74F377E92E75CEBA00AB1A72 /* ImportSequence.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ImportSequence.xcstrings; sourceTree = "<group>"; };
-		74F377EC2E75D12400AB1A72 /* ProjectList.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ProjectList.xcstrings; sourceTree = "<group>"; };
+		74F377EC2E75D12400AB1A72 /* ProjectsList.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ProjectsList.xcstrings; sourceTree = "<group>"; };
 		74F377EF2E75D25500AB1A72 /* SequenceCatalog.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = SequenceCatalog.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,8 +217,8 @@
 		74F377EB2E75D11B00AB1A72 /* ProjectsList */ = {
 			isa = PBXGroup;
 			children = (
-				74F377EC2E75D12400AB1A72 /* ProjectList.xcstrings */,
 				7448D6622E41185900D0CB5C /* ProjectsListView.swift */,
+				74F377EC2E75D12400AB1A72 /* ProjectsList.xcstrings */,
 			);
 			path = ProjectsList;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 				74F377E72E75CC5A00AB1A72 /* Project.xcstrings in Resources */,
 				74F377E52E75C9BD00AB1A72 /* CaptureSequence.xcstrings in Resources */,
 				74F377F02E75D25500AB1A72 /* SequenceCatalog.xcstrings in Resources */,
-				74F377ED2E75D12400AB1A72 /* ProjectList.xcstrings in Resources */,
+				74F377ED2E75D12400AB1A72 /* ProjectsList.xcstrings in Resources */,
 				74F377D92E7333BC00AB1A72 /* icon.icon in Resources */,
 				7448D63E2E3FD15600D0CB5C /* Assets.xcassets in Resources */,
 				74F377E22E75C8B900AB1A72 /* Common.xcstrings in Resources */,

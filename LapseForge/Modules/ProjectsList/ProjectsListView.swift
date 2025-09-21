@@ -22,7 +22,7 @@ struct ProjectsListView: View {
                     NavigationLink {
                         ProjectView(project: project, exporter: exporter)
                     } label: {
-                        Text(.ProjectList.itemTitle(project.title, project.createdDate.formatted(Date.FormatStyle(date: .numeric, time: .standard))))
+                        Text(.ProjectsList.itemTitle(project.title, project.createdDate.formatted(Date.FormatStyle(date: .numeric, time: .standard))))
                     }
                 }
                 .onDelete(perform: deleteProjects)
@@ -33,12 +33,12 @@ struct ProjectsListView: View {
                 }
                 ToolbarItem {
                     Button(action: addProject) {
-                        Label(.ProjectList.new, systemImage: "plus")
+                        Label(.ProjectsList.new, systemImage: "plus")
                     }
                 }
             }
         } detail: {
-            Text(.ProjectList.select)
+            Text(.ProjectsList.select)
         }
         .onAppear(perform: {
             deleteLostSequences()
@@ -54,13 +54,13 @@ struct ProjectsListView: View {
                     .background(.background.opacity(0.5))
                 VStack {
                     VStack(alignment: .leading) {
-                        Text(.ProjectList.exporting)
+                        Text(.ProjectsList.exporting)
                         ProgressView(value: status.exportProgress, total: 1)
-                        Text(.ProjectList.unifying)
+                        Text(.ProjectsList.unifying)
                         ProgressView(value: status.unifyProgress, total: 1)
                     }
                     if status.success {
-                        Text(.ProjectList.videoSaved)
+                        Text(.ProjectsList.videoSaved)
                         Button(.Common.ok) {
                             self.exporter.status = nil
                         }

@@ -4,6 +4,12 @@
     "deleteFrames" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete frames"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15,10 +21,16 @@
     "exportFrames" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export frmase"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exportar Frames"
+            "value" : "Exportar frames"
           }
         }
       }
@@ -26,6 +38,12 @@
     "selectAll" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select all"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37,6 +55,12 @@
     "selectedCaptures" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld frames selected"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48,6 +72,12 @@
     "unselectAll" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unselect all"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
