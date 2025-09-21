@@ -67,8 +67,6 @@ struct CaptureSequenceView: View {
     @State private var intervalAnchorDate: Date?
     @State private var accumulatedPausedDuration: TimeInterval = 0
     
-    @State private var updater: Int = 0
-    
     var recordingDuration: TimeInterval {
         var result = previousRecordingDuration
         
@@ -106,10 +104,6 @@ struct CaptureSequenceView: View {
             VStack {
                 CameraPreview(session: $session.session)
                     .frame(height: 400)
-                    .overlay {
-                        Text(updater.description)
-                            .foregroundStyle(.clear)
-                    }
                 VStack {
                     HStack {
                         Picker(String(localized: .CaptureSequence.camera), selection: $selectedCamera) {
@@ -171,8 +165,12 @@ struct CaptureSequenceView: View {
                 })
                 
                 Text(.CaptureSequence.captures(session.sequence.count))
-                Text(.CaptureSequence.elapsedTime(formatElapsedTime(recordingDuration)))
-                Text(.CaptureSequence.nextCapture(String(format: "%.1f", nextCaptureCountdown)))
+                DisplayedTextView {
+                    .CaptureSequence.elapsedTime(formatElapsedTime(recordingDuration))
+                }
+                DisplayedTextView {
+                    .CaptureSequence.nextCapture(String(format: "%.1f", nextCaptureCountdown))
+                }
                 
                 if isRecording {
                     Text(.CaptureSequence.recording)
@@ -198,8 +196,6 @@ struct CaptureSequenceView: View {
                 }
             }
             .onDisplayLinkUpdate {
-                updater += 1
-                
                 if nextCaptureCountdown <= 0, isRecording {
                     takePhoto()
                 }
@@ -306,6 +302,25 @@ extension CaptureSequenceSession: AVCapturePhotoCaptureDelegate {
 }
 
 // TODO: Mover
+struct DisplayedTextView<S>: View where S: StringProtocol {
+    var text: () -> S
+    @State private var displayedText: S = ""
+    var body: some View {
+        
+        Text(displayedText)
+            .onAppear { displayedText = text() }
+            .onDisplayLinkUpdate {
+                displayedText = text()
+            }
+    }
+}
+
+extension DisplayedTextView where S == String {
+    init(_ text: @escaping () -> LocalizedStringResource) {
+        self.init { String(localized: text()) }
+    }
+}
+
 class DisplayLinkObserver: ObservableObject {
     @Published var timestamp: CFTimeInterval = 0
     private var displayLink: CADisplayLink?
@@ -341,3 +356,4 @@ extension View {
         modifier(DisplayLinkModifier(onUpdate: perform))
     }
 }
+
