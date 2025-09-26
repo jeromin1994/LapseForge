@@ -69,6 +69,8 @@
 		74E15BE42E6EE0A900E148F7 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		74E15BE62E6EE10D00E148F7 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		74F377D82E7333BC00AB1A72 /* icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = icon.icon; sourceTree = "<group>"; };
+		74F377DA2E7583F000AB1A72 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		74F377DB2E75844100AB1A72 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		74F377E12E75C8B900AB1A72 /* Common.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Common.xcstrings; sourceTree = "<group>"; };
 		74F377E42E75C9BD00AB1A72 /* CaptureSequence.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = CaptureSequence.xcstrings; sourceTree = "<group>"; };
 		74F377E62E75CC5A00AB1A72 /* Project.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Project.xcstrings; sourceTree = "<group>"; };
@@ -91,6 +93,8 @@
 		7448D6072E3FCBC100D0CB5C = {
 			isa = PBXGroup;
 			children = (
+				74F377DB2E75844100AB1A72 /* LICENSE */,
+				74F377DA2E7583F000AB1A72 /* README.md */,
 				7448D6322E3FD14500D0CB5C /* ci_scripts */,
 				7448D63A2E3FD15600D0CB5C /* LapseForge */,
 				7448D6112E3FCBC100D0CB5C /* Products */,
