@@ -25,7 +25,7 @@ struct PreviewView: View {
                         scaleType: .fit
                     )
                 } else {
-                    Text("Preview")
+                    Text(.Project.preview)
                         .foregroundColor(.white)
                         .bold()
                 }
@@ -52,7 +52,7 @@ struct PreviewView: View {
                         )
                         Spacer(minLength: .zero)
                     }
-                    Text("\((scrubber ?? .zero).timeString) - \(project.totalDuration.timeString)")
+                    Text(.Project.timeScrubber((scrubber ?? .zero).timeString, project.totalDuration.timeString))
                         .shadow(
                             color: .white.opacity(0.8),
                             radius: 2,

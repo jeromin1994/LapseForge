@@ -7,36 +7,41 @@
 
 import SwiftUI
 
-public struct AlertButton {
-    let title: String
+public struct AlertButton: Identifiable {
+    public let id = UUID()
+    let title: LocalizedStringResource
     var role: ButtonRole?
     var action: (() -> Void)?
     
-    public init(title: String, role: ButtonRole? = nil, action: (() -> Void)? = nil) {
+    public init(title: LocalizedStringResource, role: ButtonRole? = nil, action: (() -> Void)? = nil) {
         self.title = title
         self.role = role
         self.action = action
     }
     
     public static func accept(action: (() -> Void)? = nil) -> Self {
-        .init(title: "Aceptar", action: action)
+        .init(title: .Common.accept, action: action)
     }
     
     public static func cancel(action: (() -> Void)? = nil) -> Self {
-        .init(title: "Cancelar", role: .cancel, action: action)
+        .init(title: .Common.cancel, role: .cancel, action: action)
     }
     
     public static func delete(action: (() -> Void)? = nil) -> Self {
-        .init(title: "Borrar", role: .destructive, action: action)
+        .init(title: .Common.delete, role: .destructive, action: action)
     }
 }
 
 public struct AlertModel {
-    let title: String
-    let message: String
+    let title: LocalizedStringResource
+    let message: LocalizedStringResource
     var buttons: [AlertButton] = [.accept()]
     
-    public init(title: String, message: String, buttons: [AlertButton] = [.accept()]) {
+    public init(
+        title: LocalizedStringResource,
+        message: LocalizedStringResource,
+        buttons: [AlertButton] = [.accept()]
+    ) {
         self.title = title
         self.message = message
         self.buttons = buttons
@@ -53,7 +58,7 @@ extension View {
             ),
             presenting: model.wrappedValue
         ) { model in
-            ForEach(model.buttons, id: \.title) { button in
+            ForEach(model.buttons) { button in
                 Button(button.title, role: button.role) {
                     button.action?()
                 }

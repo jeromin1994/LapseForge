@@ -67,8 +67,6 @@ struct CaptureSequenceView: View {
     @State private var intervalAnchorDate: Date?
     @State private var accumulatedPausedDuration: TimeInterval = 0
     
-    @State private var updater: Int = 0
-    
     var recordingDuration: TimeInterval {
         var result = previousRecordingDuration
         
@@ -106,15 +104,11 @@ struct CaptureSequenceView: View {
             VStack {
                 CameraPreview(session: $session.session)
                     .frame(height: 400)
-                    .overlay {
-                        Text("\(updater)")
-                            .foregroundStyle(.clear)
-                    }
                 VStack {
                     HStack {
-                        Picker("Cámara", selection: $selectedCamera) {
-                            Text("Trasera").tag(AVCaptureDevice.Position.back)
-                            Text("Frontal").tag(AVCaptureDevice.Position.front)
+                        Picker(String(localized: .CaptureSequence.camera), selection: $selectedCamera) {
+                            Text(.CaptureSequence.back).tag(AVCaptureDevice.Position.back)
+                            Text(.CaptureSequence.front).tag(AVCaptureDevice.Position.front)
                         }
                         .pickerStyle(.segmented)
                         .onChange(of: selectedCamera) { _, newCamera in
@@ -124,7 +118,12 @@ struct CaptureSequenceView: View {
                     HStack {
                         VStack {
                             Slider(value: $interval, in: unit.range, step: unit.step)
-                            Text("Intervalo: \(Int(interval)) \(unit.formatted)")
+                            Text(
+                                .CaptureSequence.interval(
+                                    Int(interval),
+                                    unit.formatted
+                                )
+                            )
                         }
                         Picker("", selection: $unit) {
                             ForEach(TimeUnit.allCases) { u in
@@ -165,36 +164,38 @@ struct CaptureSequenceView: View {
                         .foregroundColor(isRecording ? .red : .green)
                 })
                 
-                Text("Capturas: \(session.sequence.count)")
-                Text("Tiempo transcurrido: \(formatElapsedTime(recordingDuration))")
-                Text("Próxima captura en: \(String(format: "%.1f", nextCaptureCountdown))s")
+                Text(.CaptureSequence.captures(session.sequence.count))
+                DisplayedTextView {
+                    .CaptureSequence.elapsedTime(formatElapsedTime(recordingDuration))
+                }
+                DisplayedTextView {
+                    .CaptureSequence.nextCapture(String(format: "%.1f", nextCaptureCountdown))
+                }
                 
                 if isRecording {
-                    Text("Recording...")
+                    Text(.CaptureSequence.recording)
                         .foregroundColor(.red)
                 }
                 
                 Spacer()
             }
-            .navigationTitle("Nueva grabación")
+            .navigationTitle(.CaptureSequence.new)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") {
+                    Button(.Common.close) {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Guardar") {
+                    Button(.Common.save) {
                         onSaveSequence?(session.sequence)
                         dismiss()
                     }
                 }
             }
             .onDisplayLinkUpdate {
-                updater += 1
-                
                 if nextCaptureCountdown <= 0, isRecording {
                     takePhoto()
                 }
@@ -301,6 +302,25 @@ extension CaptureSequenceSession: AVCapturePhotoCaptureDelegate {
 }
 
 // TODO: Mover
+struct DisplayedTextView<S>: View where S: StringProtocol {
+    var text: () -> S
+    @State private var displayedText: S = ""
+    var body: some View {
+        
+        Text(displayedText)
+            .onAppear { displayedText = text() }
+            .onDisplayLinkUpdate {
+                displayedText = text()
+            }
+    }
+}
+
+extension DisplayedTextView where S == String {
+    init(_ text: @escaping () -> LocalizedStringResource) {
+        self.init { String(localized: text()) }
+    }
+}
+
 class DisplayLinkObserver: ObservableObject {
     @Published var timestamp: CFTimeInterval = 0
     private var displayLink: CADisplayLink?
@@ -336,3 +356,4 @@ extension View {
         modifier(DisplayLinkModifier(onUpdate: perform))
     }
 }
+

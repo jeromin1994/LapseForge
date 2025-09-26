@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
+
+typealias LSR = LocalizedStringResource
 
 func runOnMainThread(_ execute: @escaping () -> Void) {
     DispatchQueue.main.async(execute: execute)
